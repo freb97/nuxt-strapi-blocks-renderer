@@ -1,0 +1,43 @@
+{
+    "name": "nuxt-strapi-blocks-renderer",
+    "version": "0.0.1",
+    "description": "Renderer for the strapi blocks text element.",
+    "license": "MIT",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./dist/types.d.ts",
+            "import": "./dist/module.mjs",
+            "require": "./dist/module.cjs"
+        }
+    },
+    "main": "./dist/module.cjs",
+    "types": "./dist/types.d.ts",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "prepack": "nuxt-module-build build",
+        "dev": "nuxi dev playground",
+        "dev:build": "nuxi build playground",
+        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+        "release": "npm run lint && npm run test && npm run prepack && npm publish && git push --follow-tags",
+        "lint": "eslint './**/*.{js,ts,vue}' --max-warnings=0"
+    },
+    "dependencies": {
+        "@nuxt/kit": "^3.8.2"
+    },
+    "devDependencies": {
+        "@types/node": "^20.10.3",
+        "@nuxt/devtools": "^1.0.6",
+        "@nuxt/eslint-config": "^0.2.0",
+        "@nuxt/module-builder": "^0.5.4",
+        "@nuxt/schema": "^3.8.2",
+        "@nuxt/test-utils": "^3.8.1",
+        "@stylistic/eslint-plugin": "^1.5.1",
+        "eslint": "^8.55.0",
+        "nuxt": "^3.8.2",
+        "vue": "^3.3.13",
+        "vue-eslint-parser": "^9.3.2"
+    }
+}
