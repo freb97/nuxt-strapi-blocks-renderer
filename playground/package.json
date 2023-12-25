@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "nuxt-strapi-blocks-renderer-playground",
+  "name": "strapi-blocks-renderer-playground",
   "type": "module",
   "scripts": {
     "dev": "nuxi dev",

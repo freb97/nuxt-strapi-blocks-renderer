@@ -1,7 +1,11 @@
 <script setup lang="ts">
-    const textNodes = [];
+    import sampleNodes from '../sampleNodes.json';
 </script>
 
 <template>
-    <StrapiBlocksText :nodes="textNodes" />
+    <div>
+        <h1>Strapi blocks renderer text</h1>
+
+        <StrapiBlocksText :nodes="sampleNodes" />
+    </div>
 </template>
