@@ -1,16 +1,16 @@
-import { h } from 'vue';
+import { renderBlocks } from '#strapi-blocks-renderer/utils';
 
 import type { VNode } from 'vue';
-import type { BlockNode } from '../../../types';
+import type { BlockNode } from '#strapi-blocks-renderer/types';
 
 export type UseBlocksTextReturn = {
-    text: VNode;
+    text: VNode[];
 };
 
 export const useBlocksText = (blockNodes: BlockNode[]): UseBlocksTextReturn => {
-    const text: VNode = h('div', {}, 'Text');
+    const textNodes: VNode[] = renderBlocks(blockNodes);
 
     return {
-        text,
+        text: textNodes,
     };
 };

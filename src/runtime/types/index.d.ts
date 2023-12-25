@@ -1,7 +1,3 @@
-// Module options
-
-export type ModuleOptions = {};
-
 // Inline nodes
 
 export type TextInlineNode = {
