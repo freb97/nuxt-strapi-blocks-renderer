@@ -1,6 +1,5 @@
-import { defineNuxtModule } from '@nuxt/kit';
+import { addComponentsDir, addImports, createResolver, defineNuxtModule } from '@nuxt/kit';
 
-import type { Nuxt } from '@nuxt/schema';
 import type { ModuleOptions } from '../types';
 
 export default defineNuxtModule<ModuleOptions>({
@@ -11,7 +10,20 @@ export default defineNuxtModule<ModuleOptions>({
 
     defaults: {},
 
-    setup(options: ModuleOptions, nuxt: Nuxt) {
+    setup() {
+        // @ts-ignore
+        const { resolve } = createResolver(import.meta.url);
+        const resolveRuntimeModule = (path: string): string => resolve('./runtime', path);
 
+        addImports([
+            { name: 'useBlocksText', as: 'useBlocksText', from: resolveRuntimeModule('./composables/useBlocksText') },
+        ]);
+
+        addComponentsDir({
+            path: resolve('./runtime/components'),
+            pathPrefix: false,
+            prefix: '',
+            global: true,
+        });
     },
 });
