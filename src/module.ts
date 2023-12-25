@@ -1,17 +1,17 @@
-import { defineNuxtModule } from '@nuxt/kit'
+import { defineNuxtModule } from '@nuxt/kit';
 
-export interface ModuleOptions {
-}
+import type { Nuxt } from '@nuxt/schema';
+import type { ModuleOptions } from '../types';
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
         name: 'nuxt-strapi-blocks-renderer',
-        configKey: 'strapiBlocksRenderer'
+        configKey: 'strapiBlocksRenderer',
     },
 
     defaults: {},
 
-    setup(options, nuxt) {
+    setup(options: ModuleOptions, nuxt: Nuxt) {
 
-    }
-})
+    },
+});
