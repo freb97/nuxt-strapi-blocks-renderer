@@ -14,7 +14,7 @@ const fetchPage = async (): Promise<string> => {
 
 describe('Basic blocks text rendering', async () => {
     await setup({
-        rootDir: fileURLToPath(new URL('../playground/basic', import.meta.url)),
+        rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
     });
 
     it('Renders the heading nodes', async () => {
