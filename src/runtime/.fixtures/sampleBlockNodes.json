@@ -221,7 +221,7 @@
         "type": "image",
         "image": {
             "name": "example-image.jpg",
-            "alternativeText": "example-image.jpg",
+            "alternativeText": "Image alternative text",
             "caption": null,
             "width": 480,
             "height": 320,
