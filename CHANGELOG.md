@@ -1,3 +1,6 @@
+# 1.0.0
+- Updated README.md with proper documentation
+
 # 0.0.5
 - Added vue render function import to utils
 - Updated text rendering functions
