@@ -1,10 +1,14 @@
 # Nuxt Strapi Blocks Renderer
 
-A fully customizable Nuxt module for rendering the 'blocks' text element from Strapi CMS.
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+
+A fully customizable Nuxt 3 module for rendering text with the new Blocks rich text editor element from Strapi CMS.
 
 ## Installation
 
-1. Install the npm package:
+1. Install the Blocks renderer:
 
     ```bash
     npm install nuxt-strapi-blocks-renderer
@@ -24,8 +28,8 @@ To render text, use the `StrapiBlocksText` component:
 <StrapiBlocksText :nodes="blockNodes" />
 ```
 
-In this example, the `blockNodes` are taken from the JSON response which Strapi provides when using the `blocks` text
-element:
+In this example, the `blockNodes` are taken from the JSON response which Strapi provides when using the Blocks rich
+text editor element:
 
 ```vue
 <script setup lang="ts">
@@ -46,6 +50,8 @@ element:
     <StrapiBlocksText :nodes="blockNodes" />
 </template>
 ```
+
+To use the `useStrapi` composable, install the [Strapi Nuxt module](https://strapi.nuxtjs.org/).
 
 ### Advanced Usage
 
@@ -273,3 +279,12 @@ npm run test
 # Release new version
 npm run release
 ```
+
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
+
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
+
+[license-src]: https://img.shields.io/github/license/freb97/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/blob/main/LICENSE
