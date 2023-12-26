@@ -111,17 +111,15 @@ export const imageBlockNode = (node: BlockNode): VNode => {
     });
 };
 
-export const blockNodeMap: { [key: string]: (node: BlockNode) => VNode } = {
-    'heading': headingBlockNode,
-    'paragraph': paragraphBlockNode,
-    'code': codeBlockNode,
-    'list': listBlockNode,
-    'quote': quoteBlockNode,
-    'image': imageBlockNode,
-};
-
 export const renderBlocks = (blockNodes: BlockNode[]): VNode[] => {
     return blockNodes.map((blockNode: BlockNode) => {
-        return blockNodeMap[blockNode.type](blockNode);
+        switch (blockNode.type) {
+            case 'heading': return headingBlockNode(blockNode);
+            case 'paragraph': return paragraphBlockNode(blockNode);
+            case 'code': return codeBlockNode(blockNode);
+            case 'list': return listBlockNode(blockNode);
+            case 'quote': return quoteBlockNode(blockNode);
+            case 'image': return imageBlockNode(blockNode);
+        }
     });
 };

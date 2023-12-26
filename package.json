@@ -27,7 +27,8 @@
         "test:watch": "vitest watch"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.8.2"
+        "@nuxt/kit": "^3.8.2",
+        "defu": "^6.1.3"
     },
     "devDependencies": {
         "@types/node": "^20.10.3",

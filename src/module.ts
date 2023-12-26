@@ -10,7 +10,7 @@ export type ModuleOptions = {
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
-        name: 'strapi-blocks-renderer',
+        name: 'nuxt-strapi-blocks-renderer',
         configKey: 'strapiBlocksRenderer',
     },
 
