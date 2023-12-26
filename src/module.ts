@@ -1,8 +1,7 @@
 import { addComponentsDir, addImports, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
 
-import type { ComponentsDir, Nuxt } from '@nuxt/schema';
-import type { RuntimeConfig } from 'nuxt/schema';
+import type { ComponentsDir, Nuxt, RuntimeConfig } from '@nuxt/schema';
 
 export type ModuleOptions = {
     prefix: string;
@@ -28,12 +27,7 @@ export default defineNuxtModule<ModuleOptions>({
         nuxt.options.alias['#strapi-blocks-renderer'] = resolve(runtimeDirectory);
 
         const runtimeConfig: RuntimeConfig = nuxt.options.runtimeConfig;
-        runtimeConfig.public = defu(runtimeConfig.public, {
-            strapiBlocksRenderer: {
-                prefix: options.prefix,
-                blocksPrefix: options.blocksPrefix,
-            },
-        });
+        runtimeConfig.public.strapiBlocksRenderer = defu(runtimeConfig.public.strapiBlocksRenderer, options);
 
         addImports([{
             name: 'useBlocksText',

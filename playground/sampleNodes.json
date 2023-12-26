@@ -72,22 +72,14 @@
         "type": "paragraph",
         "children": [
             {
-                "text": "",
-                "type": "text"
-            },
-            {
                 "type": "link",
-                "url": "https://www.amg-implants.com/",
+                "url": "https://www.example.com/",
                 "children": [
                     {
                         "text": "Link",
                         "type": "text"
                     }
                 ]
-            },
-            {
-                "text": "",
-                "type": "text"
             }
         ]
     },
@@ -100,7 +92,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "List item 1"
+                        "text": "Unordered list item 1"
                     }
                 ]
             },
@@ -109,7 +101,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "List item 2"
+                        "text": "Unordered list item 2"
                     }
                 ]
             },
@@ -118,7 +110,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "List item 3"
+                        "text": "Unordered list item 3"
                     }
                 ]
             }
@@ -133,7 +125,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "Count item 1"
+                        "text": "Ordered list item 1"
                     }
                 ]
             },
@@ -142,7 +134,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "Count item 2"
+                        "text": "Ordered list item 2"
                     }
                 ]
             },
@@ -151,7 +143,7 @@
                 "children": [
                     {
                         "type": "text",
-                        "text": "Count item 3"
+                        "text": "Ordered list item 3"
                     }
                 ]
             }
@@ -162,7 +154,16 @@
         "children": [
             {
                 "type": "text",
-                "text": "This is a quote!"
+                "text": "Quote"
+            }
+        ]
+    },
+    {
+        "type": "code",
+        "children": [
+            {
+                "type": "text",
+                "text": "Code"
             }
         ]
     }
