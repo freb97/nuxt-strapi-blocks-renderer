@@ -1,3 +1,5 @@
+import { resolveComponent } from 'vue';
+
 import type { ConcreteComponent } from 'vue';
 
 import type {

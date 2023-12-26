@@ -1,6 +1,6 @@
 {
     "name": "nuxt-strapi-blocks-renderer",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "Renderer for the strapi blocks text element.",
     "license": "MIT",
     "type": "module",
@@ -21,7 +21,7 @@
         "dev": "npm run dev:basic",
         "dev:basic": "nuxi dev playground/basic",
         "dev:custom": "nuxi dev playground/custom",
-        "release": "npm run lint && npm run test && npm run prepack && npm publish && git push --follow-tags",
+        "release": "npm run lint && npm run test && npm run prepack && npm publish",
         "lint": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
         "test": "vitest run",
         "test:watch": "vitest watch"
