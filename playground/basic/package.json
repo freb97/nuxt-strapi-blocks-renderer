@@ -1,0 +1,14 @@
+{
+    "private": true,
+    "name": "strapi-blocks-renderer-playground-basic",
+    "type": "module",
+    "license": "MIT",
+    "scripts": {
+        "dev": "nuxi dev",
+        "build": "nuxi build",
+        "generate": "nuxi generate"
+    },
+    "devDependencies": {
+        "nuxt": "^3.8.2"
+    }
+}

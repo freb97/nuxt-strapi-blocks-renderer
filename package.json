@@ -18,11 +18,13 @@
     ],
     "scripts": {
         "prepack": "nuxt-module-build build",
-        "dev": "nuxi dev playground",
-        "dev:build": "nuxi build playground",
-        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare && nuxi prepare playground",
+        "dev": "npm run dev:basic",
+        "dev:basic": "nuxi dev playground/basic",
+        "dev:custom": "nuxi dev playground/custom",
         "release": "npm run lint && npm run test && npm run prepack && npm publish && git push --follow-tags",
-        "lint": "eslint './**/*.{js,ts,vue}' --max-warnings=0"
+        "lint": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
+        "test": "vitest run",
+        "test:watch": "vitest watch"
     },
     "dependencies": {
         "@nuxt/kit": "^3.8.2"
@@ -37,6 +39,7 @@
         "@stylistic/eslint-plugin": "^1.5.1",
         "eslint": "^8.55.0",
         "nuxt": "^3.8.2",
+        "vitest": "^1.1.0",
         "vue": "^3.3.13",
         "vue-eslint-parser": "^9.3.2"
     }

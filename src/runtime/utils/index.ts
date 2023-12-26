@@ -20,11 +20,11 @@ const prefix = (): string => {
 };
 
 export const textInlineNode = (node: TextInlineNode): VNode | string => {
-    if (node.bold) return h(resolveComponent(prefix() + 'BoldInlineNode'), node.text);
-    if (node.italic) return h(resolveComponent(prefix() + 'ItalicInlineNode'), node.text);
-    if (node.underline) return h(resolveComponent(prefix() + 'UnderlineInlineNode'), node.text);
-    if (node.strikethrough) return h(resolveComponent(prefix() + 'StrikethroughInlineNode'), node.text);
-    if (node.code) return h(resolveComponent(prefix() + 'CodeInlineNode'), node.text);
+    if (node.bold) return h(resolveComponent(prefix() + 'BoldInlineNode'), () => node.text);
+    if (node.italic) return h(resolveComponent(prefix() + 'ItalicInlineNode'), () => node.text);
+    if (node.underline) return h(resolveComponent(prefix() + 'UnderlineInlineNode'), () => node.text);
+    if (node.strikethrough) return h(resolveComponent(prefix() + 'StrikethroughInlineNode'), () => node.text);
+    if (node.code) return h(resolveComponent(prefix() + 'CodeInlineNode'), () => node.text);
 
     return node.text;
 };
@@ -107,7 +107,7 @@ export const imageBlockNode = (node: BlockNode): VNode => {
     const imageComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ImageNode');
 
     return h(imageComponent, {
-        image: (node as ImageBlockNode),
+        image: (node as ImageBlockNode).image,
     });
 };
 

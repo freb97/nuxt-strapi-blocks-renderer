@@ -1,0 +1,6 @@
+{
+    "private": true,
+    "name": "strapi-blocks-renderer-test-basic",
+    "type": "module",
+    "license": "MIT"
+}
