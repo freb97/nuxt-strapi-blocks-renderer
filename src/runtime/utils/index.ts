@@ -1,4 +1,5 @@
-import { resolveComponent } from 'vue';
+import { resolveComponent } from '#imports';
+import { useRuntimeConfig } from '#imports';
 
 import type { ConcreteComponent } from 'vue';
 
