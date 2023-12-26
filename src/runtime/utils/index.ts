@@ -1,5 +1,4 @@
-import { resolveComponent } from '#imports';
-import { useRuntimeConfig } from '#imports';
+import { resolveComponent, useRuntimeConfig, h } from '#imports';
 
 import type { ConcreteComponent } from 'vue';
 
@@ -57,44 +56,43 @@ export const listItemInlineNode = (node: ListItemInlineNode): VNode => {
     );
 };
 
-export const headingBlockNode = (node: BlockNode): VNode => {
-    const level: number = (node as HeadingBlockNode).level;
-    const headingComponent: string | ConcreteComponent = resolveComponent(prefix() + 'Heading' + level + 'Node');
+export const headingBlockNode = (node: HeadingBlockNode): VNode => {
+    const headingComponent: string | ConcreteComponent = resolveComponent(prefix() + 'Heading' + node.level + 'Node');
 
-    return h(headingComponent, () => (node as HeadingBlockNode).children.map(
+    return h(headingComponent, () => node.children.map(
         (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
     );
 };
 
-export const paragraphBlockNode = (node: BlockNode): VNode => {
+export const paragraphBlockNode = (node: ParagraphBlockNode): VNode => {
     const paragraphComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ParagraphNode');
 
-    return h(paragraphComponent, () => (node as ParagraphBlockNode).children.map(
+    return h(paragraphComponent, () => node.children.map(
         (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
     );
 };
 
-export const codeBlockNode = (node: BlockNode): VNode => {
+export const codeBlockNode = (node: CodeBlockNode): VNode => {
     const codeComponent: string | ConcreteComponent = resolveComponent(prefix() + 'CodeNode');
 
-    return h(codeComponent, () => (node as CodeBlockNode).children.map(
+    return h(codeComponent, () => node.children.map(
         (childNode: TextInlineNode): VNode | string => textInlineNode(childNode))
     );
 };
 
-export const quoteBlockNode = (node: BlockNode): VNode => {
+export const quoteBlockNode = (node: QuoteBlockNode): VNode => {
     const quoteComponent: string | ConcreteComponent = resolveComponent(prefix() + 'QuoteNode');
 
-    return h(quoteComponent, () => (node as QuoteBlockNode).children.map(
+    return h(quoteComponent, () => node.children.map(
         (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
     );
 };
 
-export const listBlockNode = (node: BlockNode): VNode => {
-    const listType: string = (node as ListBlockNode).format === 'ordered' ? 'OrderedListNode' : 'UnorderedListNode';
+export const listBlockNode = (node: ListBlockNode): VNode => {
+    const listType: string = node.format === 'ordered' ? 'OrderedListNode' : 'UnorderedListNode';
     const listComponent: string | ConcreteComponent = resolveComponent(prefix() + listType);
 
-    return h(listComponent, () => (node as ListBlockNode).children.map(
+    return h(listComponent, () => node.children.map(
         (childNode: ListBlockNode | ListItemInlineNode): VNode | undefined => {
             if (childNode.type === 'list') {
                 return listBlockNode(childNode);
@@ -102,15 +100,15 @@ export const listBlockNode = (node: BlockNode): VNode => {
             else if (childNode.type === 'list-item') {
                 return listItemInlineNode(childNode);
             }
-        }
+        },
     ));
 };
 
-export const imageBlockNode = (node: BlockNode): VNode => {
+export const imageBlockNode = (node: ImageBlockNode): VNode => {
     const imageComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ImageNode');
 
     return h(imageComponent, {
-        image: (node as ImageBlockNode).image,
+        image: node.image,
     });
 };
 

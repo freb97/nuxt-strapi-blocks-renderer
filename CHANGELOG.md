@@ -1,4 +1,8 @@
-# 0.0.3
+# 0.0.5
+- Added vue render function import to utils
+- Updated text rendering functions
+
+# 0.0.4
 - Added useRuntimeConfig import to utils
 
 # 0.0.3
