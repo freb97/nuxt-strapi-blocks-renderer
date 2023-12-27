@@ -1,4 +1,4 @@
-name: 'Tests'
+name: 'tests'
 
 on:
     push:
@@ -37,8 +37,12 @@ jobs:
               with:
                   node-version: '20'
 
+            - run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
             - run: npm install
             - run: npm run dev:prepare
-            - run: npm run prepack
-            - run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
-            - run: npm publish
+
+            - name: Release
+              if: |
+                  github.event_name == 'pull_request' &&
+                  !contains(github.event.head_commit.message, '[skip-release]')
+              run: npm run release:ci
