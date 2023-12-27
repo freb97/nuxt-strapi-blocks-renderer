@@ -1,7 +1,8 @@
 # Nuxt Strapi Blocks Renderer
 
-[![npm version][npm-version-src]][npm-version-href]
-[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions][github-actions-src]][github-actions-href]
+[![NPM version][npm-version-src]][npm-version-href]
+[![NPM downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
 A fully customizable Nuxt 3 module for rendering text with the new Blocks rich text editor element from Strapi CMS.
@@ -280,11 +281,14 @@ npm run test
 npm run release
 ```
 
-[npm-version-src]: https://img.shields.io/npm/v/nuxt-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[github-actions-src]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions/workflows/ci.yml/badge.svg
+[github-actions-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions
+
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=31C553
 [npm-version-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
 
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
 [npm-downloads-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
 
-[license-src]: https://img.shields.io/github/license/freb97/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-src]: https://img.shields.io/github/license/freb97/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
 [license-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/blob/main/LICENSE

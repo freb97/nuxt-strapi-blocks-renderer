@@ -1,0 +1,44 @@
+name: 'Tests'
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
+
+jobs:
+    test:
+        name: 'Lint & Test Package'
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                node-version: '20'
+
+            - run: npm install
+            - run: npm run dev:prepare
+            - run: npm run lint
+            - run: npm run test
+
+    release:
+        name: 'Release to NPM registry'
+        needs: [ test ]
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '20'
+
+            - run: npm install
+            - run: npm run dev:prepare
+            - run: npm run prepack
+            - run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
+            - run: npm publish

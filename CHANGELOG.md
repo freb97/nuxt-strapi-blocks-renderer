@@ -1,4 +1,8 @@
 # 1.0.0
+- Updated README.md
+- Added CI
+
+# 1.0.0
 - Updated README.md with proper documentation
 
 # 0.0.5
