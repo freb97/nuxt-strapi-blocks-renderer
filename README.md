@@ -95,6 +95,19 @@ To override the default paragraph tag, we create a file called `StrapiBlocksText
 
 This component assigns a custom class `my-custom-class-for-p` to the paragraph tag, which can be styled as needed.
 
+The prefix for the custom components can be adjusted in your `nuxt.config.{js|ts}`:
+
+```typescript
+modules: ['nuxt-strapi-blocks-renderer'],
+strapiBlocksRenderer: {
+    prefix: 'MyCustomPrefix'
+    blocksPrefix: 'MyCustomBlocksPrefix',
+},
+```
+
+With this configuration, the `StrapiBlocksText` component becomes `MyCustomPrefixStrapiBlocksText` and the custom
+paragraph node component would be named `MyCustomBlocksPrefixParagraphNode`.
+
 #### Other Custom Tags
 
 You can apply similar customizations to all other HTML tags used by the renderer.
