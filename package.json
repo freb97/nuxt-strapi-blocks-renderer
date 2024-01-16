@@ -3,6 +3,10 @@
     "version": "1.0.1",
     "description": "Renderer for the strapi blocks text element.",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/freb97/nuxt-strapi-blocks-renderer.git"
+    },
     "type": "module",
     "exports": {
         ".": {
