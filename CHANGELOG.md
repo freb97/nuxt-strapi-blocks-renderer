@@ -1,3 +1,6 @@
+# 1.0.2
+- Updated package.json
+
 # 1.0.1
 - Updated README.md
 - Added CI
