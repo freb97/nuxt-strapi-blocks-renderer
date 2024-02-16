@@ -34,7 +34,7 @@ text editor element:
 
 ```vue
 <script setup lang="ts">
-    import type { BlockNode } from 'nuxt-strapi-blocks-renderer/dist/runtime/types';
+    import type { BlockNode } from '#strapi-blocks-renderer/types';
     import type { Restaurant } from '~/types';
 
     const route = useRoute();

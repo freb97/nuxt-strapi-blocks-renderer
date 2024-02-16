@@ -1,3 +1,6 @@
+# 1.0.3
+- Added type checks in ci + updated documentation
+
 # 1.0.2
 - Updated package.json
 

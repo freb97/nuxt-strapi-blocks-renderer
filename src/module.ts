@@ -27,7 +27,9 @@ export default defineNuxtModule<ModuleOptions>({
         nuxt.options.alias['#strapi-blocks-renderer'] = resolve(runtimeDirectory);
 
         const runtimeConfig: RuntimeConfig = nuxt.options.runtimeConfig;
-        runtimeConfig.public.strapiBlocksRenderer = defu(runtimeConfig.public.strapiBlocksRenderer, options);
+
+        runtimeConfig.public.strapiBlocksRenderer =
+            defu(runtimeConfig.public.strapiBlocksRenderer as ModuleOptions, options);
 
         addImports([{
             name: 'useBlocksText',

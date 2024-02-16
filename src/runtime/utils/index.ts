@@ -1,12 +1,13 @@
 import { resolveComponent, useRuntimeConfig, h } from '#imports';
 
-import type { ConcreteComponent } from 'vue';
+import type { ConcreteComponent, VNode } from 'vue';
 
 import type {
     BlockNode,
     CodeBlockNode,
     DefaultInlineNode,
-    HeadingBlockNode, ImageBlockNode,
+    HeadingBlockNode,
+    ImageBlockNode,
     LinkInlineNode,
     ListBlockNode,
     ListItemInlineNode,
@@ -15,10 +16,12 @@ import type {
     TextInlineNode
 } from '#strapi-blocks-renderer/types';
 
+import type { ModuleOptions } from '~/src/module';
+
 const prefix = (): string => {
     const { public: { strapiBlocksRenderer } } = useRuntimeConfig();
 
-    return strapiBlocksRenderer.blocksPrefix;
+    return (strapiBlocksRenderer as ModuleOptions).blocksPrefix;
 };
 
 export const textInlineNode = (node: TextInlineNode): VNode | string => {

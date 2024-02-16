@@ -22,7 +22,8 @@ jobs:
 
             - run: npm install
             - run: npm run dev:prepare
-            - run: npm run lint
+            - run: npm run lint:es
+            - run: npm run lint:types
             - run: npm run test
 
     release:
