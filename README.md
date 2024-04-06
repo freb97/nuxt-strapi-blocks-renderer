@@ -336,7 +336,7 @@ npm run lint:types
 To run the Vitest unit tests, run the following command:
 
 ```bash
-npm run lint:types
+npm run test
 ````
 
 ### Release
