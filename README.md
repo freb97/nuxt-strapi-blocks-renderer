@@ -271,26 +271,85 @@ You can also use different image components here, i.e. `NuxtImg` or others.
 
 ## Development
 
+### Dependencies
+
+To install the dependencies, run the `install` command:
+
 ```bash
-# Install dependencies
 npm install
+```
 
-# Generate type stubs
+The project requires Node.js and NPM to run.
+You can either install these manually on your system or if you have the nix package manager installed, use the
+provided nix-shell with the following command:
+
+```bash
+nix-shell
+```
+
+This will automatically install the needed software and start up a shell.
+
+### Type stubs
+
+To generate the type stubs for the nuxt module, run the `dev:prepare` command:
+
+```bash
 npm run dev:prepare
+```
 
-# Develop with the basic text components playground
+### Development server
+
+To start the development server with the provided text components, run the `dev` command:
+
+```bash
 npm run dev
+```
 
-# Develop with the custom text components playground
+This will boot up the playground with the default text components.
+To start the development server using custom text components, overriding the provided components,
+use the `dev:custom` command:
+
+```bash
 npm run dev:custom
+```
 
-# Run ESLint
-npm run lint
+### Quality
 
-# Run Vitest
-npm run test
+#### Linter
 
-# Release new version
+To run ESLint, use the following command:
+
+```bash
+npm run lint:es
+```
+
+#### Type checks
+
+To run the TypeScript type checks, use the following command:
+
+```bash
+npm run lint:types
+```
+
+#### Unit Tests
+
+To run the Vitest unit tests, run the following command:
+
+```bash
+npm run lint:types
+````
+
+### Release
+
+To release a new version of the strapi blocks renderer nuxt module, take the following steps:
+
+1. Increment version number in the `package.json` file
+2. Add changelog entry for the new version number
+3. Run linters and unit tests
+4. Log in to NPM using your access token
+5. Run the `release` command
+
+```bash
 npm run release
 ```
 

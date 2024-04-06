@@ -1,5 +1,11 @@
+# 1.0.4
+- Bumped dependencies
+- Added nix shell for development
+- Updated development documentation
+
 # 1.0.3
-- Added type checks in ci + updated documentation
+- Added type checks in ci
+- Updated documentation
 
 # 1.0.2
 - Updated package.json
