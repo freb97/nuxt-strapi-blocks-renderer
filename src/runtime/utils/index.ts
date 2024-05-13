@@ -16,7 +16,7 @@ import type {
     TextInlineNode
 } from '#strapi-blocks-renderer/types';
 
-import type { ModuleOptions } from '~/src/module';
+import type { ModuleOptions } from '#strapi-blocks-renderer/../module';
 
 const prefix = (): string => {
     const { public: { strapiBlocksRenderer } } = useRuntimeConfig();

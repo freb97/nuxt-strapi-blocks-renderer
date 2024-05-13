@@ -1,3 +1,7 @@
+# 1.0.5
+- Bumped dependencies
+- Changed type check to vue-tsc
+
 # 1.0.4
 - Bumped dependencies
 - Added nix shell for development

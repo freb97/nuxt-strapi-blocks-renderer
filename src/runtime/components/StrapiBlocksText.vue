@@ -1,6 +1,7 @@
 <script setup lang="ts">
     import { useBlocksText } from '#strapi-blocks-renderer/composables/useBlocksText';
 
+    import type { VNode } from 'vue';
     import type { BlockNode } from '#strapi-blocks-renderer/types';
 
     const props = defineProps<{
