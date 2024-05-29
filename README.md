@@ -7,6 +7,8 @@
 
 A fully customizable Nuxt 3 module for rendering text with the new Blocks rich text editor element from Strapi CMS.
 
+The implementation is based on Strapi's [Blocks React Renderer](https://github.com/strapi/blocks-react-renderer/).
+
 ## Installation
 
 1. Install the Blocks renderer:

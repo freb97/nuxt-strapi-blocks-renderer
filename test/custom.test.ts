@@ -12,12 +12,12 @@ const fetchPage = async (): Promise<string> => {
     return html;
 };
 
-describe('Custom blocks text rendering', async () => {
+describe('Custom blocks text rendering', async (): Promise<void> => {
     await setup({
         rootDir: fileURLToPath(new URL('./fixtures/custom', import.meta.url)),
     });
 
-    it('Renders the custom heading nodes', async () => {
+    it('Renders the custom heading nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<h1 style="color:red;">Heading 1</h1>');
@@ -28,10 +28,11 @@ describe('Custom blocks text rendering', async () => {
         expect(html).toContain('<h6 style="color:red;">Heading 6</h6>');
     });
 
-    it('Renders the custom text nodes', async () => {
+    it('Renders the custom text nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<p style="color:red;">Paragraph</p>');
+        expect(html).toContain('<p style="color:red;">Paragraph with <br>line <br>breaks</p>');
         expect(html).toContain('<p style="color:red;"><strong style="color:red;">Bold</strong></p>');
         expect(html).toContain('<p style="color:red;"><em style="color:red;">Italic</em></p>');
         expect(html).toContain('<p style="color:red;"><u style="color:red;">Underline</u></p>');
@@ -43,7 +44,7 @@ describe('Custom blocks text rendering', async () => {
         '</p>');
     });
 
-    it('Renders the custom list nodes', async () => {
+    it('Renders the custom list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<ul style="color:red;">' +
@@ -59,19 +60,19 @@ describe('Custom blocks text rendering', async () => {
         '</ol>');
     });
 
-    it('Renders the custom quote node', async () => {
+    it('Renders the custom quote node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<blockquote style="color:red;">Quote</blockquote>');
     });
 
-    it('Renders the custom code node', async () => {
+    it('Renders the custom code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<pre style="color:red;">        Code\n    </pre>');
     });
 
-    it('Renders the custom image node', async () => {
+    it('Renders the custom image node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<img ' +

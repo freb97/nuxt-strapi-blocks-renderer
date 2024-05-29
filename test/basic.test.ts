@@ -12,12 +12,12 @@ const fetchPage = async (): Promise<string> => {
     return html;
 };
 
-describe('Basic blocks text rendering', async () => {
+describe('Basic blocks text rendering', async (): Promise<void> => {
     await setup({
         rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
     });
 
-    it('Renders the heading nodes', async () => {
+    it('Renders the heading nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<h1>Heading 1</h1>');
@@ -28,10 +28,11 @@ describe('Basic blocks text rendering', async () => {
         expect(html).toContain('<h6>Heading 6</h6>');
     });
 
-    it('Renders the text nodes', async () => {
+    it('Renders the text nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<p>Paragraph</p>');
+        expect(html).toContain('<p>Paragraph with <br>line <br>breaks</p>');
         expect(html).toContain('<p><strong>Bold</strong></p>');
         expect(html).toContain('<p><em>Italic</em></p>');
         expect(html).toContain('<p><u>Underline</u></p>');
@@ -40,7 +41,7 @@ describe('Basic blocks text rendering', async () => {
         expect(html).toContain('<p><a href="https://www.example.com/">Link</a></p>');
     });
 
-    it('Renders the list nodes', async () => {
+    it('Renders the list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<ul>' +
@@ -56,19 +57,19 @@ describe('Basic blocks text rendering', async () => {
         '</ol>');
     });
 
-    it('Renders the quote node', async () => {
+    it('Renders the quote node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<blockquote>Quote</blockquote>');
     });
 
-    it('Renders the code node', async () => {
+    it('Renders the code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<pre>        Code\n    </pre>');
     });
 
-    it('Renders the image node', async () => {
+    it('Renders the image node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<img ' +

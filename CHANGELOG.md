@@ -1,3 +1,8 @@
+# 1.0.6
+- Fixed an issue with line breaks not rendering
+- Bumped dependencies
+- Updated documentation
+
 # 1.0.5
 - Bumped dependencies
 - Changed type check to vue-tsc

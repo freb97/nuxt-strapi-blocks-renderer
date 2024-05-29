@@ -24,14 +24,30 @@ const prefix = (): string => {
     return (strapiBlocksRenderer as ModuleOptions).blocksPrefix;
 };
 
-export const textInlineNode = (node: TextInlineNode): VNode | string => {
-    if (node.bold) return h(resolveComponent(prefix() + 'BoldInlineNode'), () => node.text);
-    if (node.italic) return h(resolveComponent(prefix() + 'ItalicInlineNode'), () => node.text);
-    if (node.underline) return h(resolveComponent(prefix() + 'UnderlineInlineNode'), () => node.text);
-    if (node.strikethrough) return h(resolveComponent(prefix() + 'StrikethroughInlineNode'), () => node.text);
-    if (node.code) return h(resolveComponent(prefix() + 'CodeInlineNode'), () => node.text);
+const getNodeText = (node: TextInlineNode): (VNode | string)[] => {
+    const lines: (VNode | string)[] = [];
 
-    return node.text;
+    node.text.split('\n').forEach((line: string, index: number, array: string[]): void => {
+        lines.push(line);
+
+        if (index !== array.length - 1) {
+            lines.push(h('br'));
+        }
+    });
+
+    return lines;
+};
+
+export const textInlineNode = (node: TextInlineNode): (VNode | string)[] | VNode => {
+    const text: (VNode | string)[] = getNodeText(node);
+
+    if (node.bold) return h(resolveComponent(prefix() + 'BoldInlineNode'), () => text);
+    if (node.italic) return h(resolveComponent(prefix() + 'ItalicInlineNode'), () => text);
+    if (node.underline) return h(resolveComponent(prefix() + 'UnderlineInlineNode'), () => text);
+    if (node.strikethrough) return h(resolveComponent(prefix() + 'StrikethroughInlineNode'), () => text);
+    if (node.code) return h(resolveComponent(prefix() + 'CodeInlineNode'), () => text);
+
+    return text;
 };
 
 export const linkInlineNode = (node: LinkInlineNode): VNode => {
@@ -42,7 +58,7 @@ export const linkInlineNode = (node: LinkInlineNode): VNode => {
     }));
 };
 
-export const defaultInlineNode = (node: DefaultInlineNode): VNode | string | undefined => {
+export const defaultInlineNode = (node: DefaultInlineNode): (VNode | string)[] | VNode | undefined => {
     if (node.type === 'link') {
         return linkInlineNode(node);
     }
@@ -79,7 +95,7 @@ export const codeBlockNode = (node: CodeBlockNode): VNode => {
     const codeComponent: string | ConcreteComponent = resolveComponent(prefix() + 'CodeNode');
 
     return h(codeComponent, () => node.children.map(
-        (childNode: TextInlineNode): VNode | string => textInlineNode(childNode))
+        (childNode: TextInlineNode): (VNode | string)[] | VNode => textInlineNode(childNode))
     );
 };
 
@@ -116,7 +132,7 @@ export const imageBlockNode = (node: ImageBlockNode): VNode => {
 };
 
 export const renderBlocks = (blockNodes: BlockNode[]): VNode[] => {
-    return blockNodes.map((blockNode: BlockNode) => {
+    return blockNodes.map((blockNode: BlockNode): VNode => {
         switch (blockNode.type) {
             case 'heading': return headingBlockNode(blockNode);
             case 'paragraph': return paragraphBlockNode(blockNode);

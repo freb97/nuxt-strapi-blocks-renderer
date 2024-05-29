@@ -73,6 +73,15 @@
         "children": [
             {
                 "type": "text",
+                "text": "Paragraph with \nline \nbreaks"
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "children": [
+            {
+                "type": "text",
                 "text": "Bold",
                 "bold": "true"
             }
