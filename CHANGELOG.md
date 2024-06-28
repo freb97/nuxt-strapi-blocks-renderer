@@ -1,3 +1,8 @@
+# 1.0.7
+- Added stackblitz configuration
+- Bumped dependencies
+- Updated documentation
+
 # 1.0.6
 - Fixed an issue with line breaks not rendering
 - Bumped dependencies
