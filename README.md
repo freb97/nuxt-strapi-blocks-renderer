@@ -53,6 +53,7 @@ text editor element:
 </script>
 
 <template>
+    <!-- Render blocks text -->
     <StrapiBlocksText :nodes="blockNodes" />
 </template>
 ```
