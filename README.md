@@ -181,9 +181,7 @@ Custom blockquote and code tags (`<blockquote>`, `<pre>`):
 
 <!-- components/StrapiBlocksTextCodeNode.vue -->
 <template>
-    <pre class="my-custom-class-for-pre">
-        <slot />
-    </pre>
+    <pre class="my-custom-class-for-pre"><slot /></pre>
 </template>
 ```
 

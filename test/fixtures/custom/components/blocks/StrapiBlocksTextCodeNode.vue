@@ -1,5 +1,3 @@
 <template>
-    <pre style="color: red;">
-        <slot />
-    </pre>
+    <pre style="color: red;"><slot /></pre>
 </template>

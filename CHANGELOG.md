@@ -1,3 +1,7 @@
+# 1.0.8
+- Fixed code node handling - Thanks to @TRiBotWillB
+- Bumped dependencies
+
 # 1.0.7
 - Added stackblitz configuration
 - Bumped dependencies

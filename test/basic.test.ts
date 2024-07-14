@@ -66,7 +66,7 @@ describe('Basic blocks text rendering', async (): Promise<void> => {
     it('Renders the code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<pre>        Code\n    </pre>');
+        expect(html).toContain('<pre>Code</pre>');
     });
 
     it('Renders the image node', async (): Promise<void> => {
