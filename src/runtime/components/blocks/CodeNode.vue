@@ -1,5 +1,3 @@
 <template>
-    <pre>
-        <slot />
-    </pre>
+    <pre><slot /></pre>
 </template>
