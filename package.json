@@ -42,28 +42,22 @@
         "defu": "^6.1.4"
     },
     "devDependencies": {
+        "@antfu/eslint-config": "^2.25.1",
         "@nuxt/devtools": "^1.3.9",
-        "@nuxt/eslint-config": "^0.3.13",
-        "@nuxt/module-builder": "^0.8.1",
-        "@nuxt/schema": "^3.12.3",
-        "@nuxt/test-utils": "^3.13.1",
-        "@stylistic/eslint-plugin": "^2.3.0",
-        "@types/node": "^20.14.10",
-        "@typescript-eslint/eslint-plugin": "^7.16.0",
+        "@nuxt/module-builder": "^0.8.3",
+        "@nuxt/schema": "^3.12.4",
+        "@nuxt/test-utils": "^3.14.1",
+        "@types/node": "^22.3.0",
         "eslint": "^8.57.0",
-        "nuxt": "^3.12.3",
-        "typescript": "^5.5.3",
-        "vitest": "^1.6.0",
-        "vue": "^3.4.31",
-        "vue-eslint-parser": "^9.4.3",
-        "vue-tsc": "^2.0.26"
+        "nuxt": "^3.12.4",
+        "vitest": "^2.0.5",
+        "vue-tsc": "^2.0.29"
     },
     "keywords": [
         "nuxt", "nuxt3", "nuxtjs", "nuxt-module", "strapi", "strapi-cms", "json", "blocks"
     ],
-    "packageManager": "npm@10.2.4",
     "engines": {
-        "node": "^18.x || ^20.x"
+        "node": "^18.x || ^20.x || ^22.x"
     },
     "stackblitz": {
         "startCommand": "npm run dev:prepare && npm run dev"

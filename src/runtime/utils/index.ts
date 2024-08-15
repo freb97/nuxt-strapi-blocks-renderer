@@ -1,5 +1,3 @@
-import { resolveComponent, useRuntimeConfig, h } from '#imports';
-
 import type { ConcreteComponent, VNode } from 'vue';
 
 import type {
@@ -13,10 +11,12 @@ import type {
     ListItemInlineNode,
     ParagraphBlockNode,
     QuoteBlockNode,
-    TextInlineNode
+    TextInlineNode,
 } from '#strapi-blocks-renderer/types';
 
 import type { ModuleOptions } from '#strapi-blocks-renderer/../module';
+
+import { h, resolveComponent, useRuntimeConfig } from '#imports';
 
 const prefix = (): string => {
     const { public: { strapiBlocksRenderer } } = useRuntimeConfig();
@@ -41,17 +41,17 @@ const getNodeText = (node: TextInlineNode): (VNode | string)[] => {
 export const textInlineNode = (node: TextInlineNode): (VNode | string)[] | VNode => {
     const text: (VNode | string)[] = getNodeText(node);
 
-    if (node.bold) return h(resolveComponent(prefix() + 'BoldInlineNode'), () => text);
-    if (node.italic) return h(resolveComponent(prefix() + 'ItalicInlineNode'), () => text);
-    if (node.underline) return h(resolveComponent(prefix() + 'UnderlineInlineNode'), () => text);
-    if (node.strikethrough) return h(resolveComponent(prefix() + 'StrikethroughInlineNode'), () => text);
-    if (node.code) return h(resolveComponent(prefix() + 'CodeInlineNode'), () => text);
+    if (node.bold) return h(resolveComponent(`${prefix()}BoldInlineNode`), () => text);
+    if (node.italic) return h(resolveComponent(`${prefix()}ItalicInlineNode`), () => text);
+    if (node.underline) return h(resolveComponent(`${prefix()}UnderlineInlineNode`), () => text);
+    if (node.strikethrough) return h(resolveComponent(`${prefix()}StrikethroughInlineNode`), () => text);
+    if (node.code) return h(resolveComponent(`${prefix()}CodeInlineNode`), () => text);
 
     return text;
 };
 
 export const linkInlineNode = (node: LinkInlineNode): VNode => {
-    const linkComponent: string | ConcreteComponent = resolveComponent(prefix() + 'LinkInlineNode');
+    const linkComponent: string | ConcreteComponent = resolveComponent(`${prefix()}LinkInlineNode`);
 
     return h(linkComponent, { url: node.url }, () => node.children.map((childNode: TextInlineNode) => {
         return textInlineNode(childNode);
@@ -68,43 +68,43 @@ export const defaultInlineNode = (node: DefaultInlineNode): (VNode | string)[] |
 };
 
 export const listItemInlineNode = (node: ListItemInlineNode): VNode => {
-    const listItemComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ListItemInlineNode');
+    const listItemComponent: string | ConcreteComponent = resolveComponent(`${prefix()}ListItemInlineNode`);
 
     return h(listItemComponent, () => node.children.map(
-        (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
-    );
+        (childNode: DefaultInlineNode) => defaultInlineNode(childNode),
+    ));
 };
 
 export const headingBlockNode = (node: HeadingBlockNode): VNode => {
-    const headingComponent: string | ConcreteComponent = resolveComponent(prefix() + 'Heading' + node.level + 'Node');
+    const headingComponent: string | ConcreteComponent = resolveComponent(`${prefix()}Heading${node.level}Node`);
 
     return h(headingComponent, () => node.children.map(
-        (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
-    );
+        (childNode: DefaultInlineNode) => defaultInlineNode(childNode),
+    ));
 };
 
 export const paragraphBlockNode = (node: ParagraphBlockNode): VNode => {
-    const paragraphComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ParagraphNode');
+    const paragraphComponent: string | ConcreteComponent = resolveComponent(`${prefix()}ParagraphNode`);
 
     return h(paragraphComponent, () => node.children.map(
-        (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
-    );
+        (childNode: DefaultInlineNode) => defaultInlineNode(childNode),
+    ));
 };
 
 export const codeBlockNode = (node: CodeBlockNode): VNode => {
-    const codeComponent: string | ConcreteComponent = resolveComponent(prefix() + 'CodeNode');
+    const codeComponent: string | ConcreteComponent = resolveComponent(`${prefix()}CodeNode`);
 
     return h(codeComponent, () => node.children.map(
-        (childNode: TextInlineNode): (VNode | string)[] | VNode => textInlineNode(childNode))
-    );
+        (childNode: TextInlineNode): (VNode | string)[] | VNode => textInlineNode(childNode),
+    ));
 };
 
 export const quoteBlockNode = (node: QuoteBlockNode): VNode => {
-    const quoteComponent: string | ConcreteComponent = resolveComponent(prefix() + 'QuoteNode');
+    const quoteComponent: string | ConcreteComponent = resolveComponent(`${prefix()}QuoteNode`);
 
     return h(quoteComponent, () => node.children.map(
-        (childNode: DefaultInlineNode) => defaultInlineNode(childNode))
-    );
+        (childNode: DefaultInlineNode) => defaultInlineNode(childNode),
+    ));
 };
 
 export const listBlockNode = (node: ListBlockNode): VNode => {
@@ -113,18 +113,17 @@ export const listBlockNode = (node: ListBlockNode): VNode => {
 
     return h(listComponent, () => node.children.map(
         (childNode: ListBlockNode | ListItemInlineNode): VNode | undefined => {
-            if (childNode.type === 'list') {
-                return listBlockNode(childNode);
-            }
-            else if (childNode.type === 'list-item') {
+            if (childNode.type === 'list-item') {
                 return listItemInlineNode(childNode);
             }
+
+            return listBlockNode(childNode);
         },
     ));
 };
 
 export const imageBlockNode = (node: ImageBlockNode): VNode => {
-    const imageComponent: string | ConcreteComponent = resolveComponent(prefix() + 'ImageNode');
+    const imageComponent: string | ConcreteComponent = resolveComponent(`${prefix()}ImageNode`);
 
     return h(imageComponent, {
         image: node.image,
@@ -135,11 +134,11 @@ export const renderBlocks = (blockNodes: BlockNode[]): VNode[] => {
     return blockNodes.map((blockNode: BlockNode): VNode => {
         switch (blockNode.type) {
             case 'heading': return headingBlockNode(blockNode);
-            case 'paragraph': return paragraphBlockNode(blockNode);
             case 'code': return codeBlockNode(blockNode);
             case 'list': return listBlockNode(blockNode);
             case 'quote': return quoteBlockNode(blockNode);
             case 'image': return imageBlockNode(blockNode);
+            default: return paragraphBlockNode(blockNode);
         }
     });
 };

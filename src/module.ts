@@ -3,10 +3,10 @@ import { defu } from 'defu';
 
 import type { ComponentsDir, Nuxt, RuntimeConfig } from '@nuxt/schema';
 
-export type ModuleOptions = {
-    prefix: string;
-    blocksPrefix: string;
-};
+export interface ModuleOptions {
+    prefix: string
+    blocksPrefix: string
+}
 
 export default defineNuxtModule<ModuleOptions>({
     meta: {
@@ -28,13 +28,14 @@ export default defineNuxtModule<ModuleOptions>({
 
         const runtimeConfig: RuntimeConfig = nuxt.options.runtimeConfig;
 
-        runtimeConfig.public.strapiBlocksRenderer =
-            defu(runtimeConfig.public.strapiBlocksRenderer as ModuleOptions, options);
+        runtimeConfig.public.strapiBlocksRenderer
+            = defu(runtimeConfig.public.strapiBlocksRenderer as ModuleOptions, options);
 
         addImports([{
             name: 'useBlocksText',
             as: 'useBlocksText',
-            from: resolve(runtimeDirectory, './composables/useBlocksText') },
+            from: resolve(runtimeDirectory, './composables/useBlocksText'),
+        },
         ]);
 
         addComponentsDir({

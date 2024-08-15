@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { fileURLToPath } from 'node:url';
+import { describe, expect, it } from 'vitest';
 import { $fetch, setup } from '@nuxt/test-utils';
 
 const fetchPage = async (): Promise<string> => {
@@ -7,17 +7,17 @@ const fetchPage = async (): Promise<string> => {
 
     // Remove html comment nodes
     html = html.replace(/<!--\[-->/g, '');
-    html = html.replace(/<!--]-->/g, '');
+    html = html.replace(/<!--\]-->/g, '');
 
     return html;
 };
 
-describe('Custom blocks text rendering', async (): Promise<void> => {
+describe('custom blocks text rendering', async (): Promise<void> => {
     await setup({
         rootDir: fileURLToPath(new URL('./fixtures/custom', import.meta.url)),
     });
 
-    it('Renders the custom heading nodes', async (): Promise<void> => {
+    it('renders the custom heading nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<h1 style="color:red;">Heading 1</h1>');
@@ -28,7 +28,7 @@ describe('Custom blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<h6 style="color:red;">Heading 6</h6>');
     });
 
-    it('Renders the custom text nodes', async (): Promise<void> => {
+    it('renders the custom text nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<p style="color:red;">Paragraph</p>');
@@ -39,48 +39,48 @@ describe('Custom blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<p style="color:red;"><del style="color:red;">Strikethrough</del></p>');
         expect(html).toContain('<p style="color:red;"><code style="color:red;">Code</code></p>');
 
-        expect(html).toContain('<p style="color:red;">' +
-            '<a style="color:red;" href="https://www.example.com/">Link</a>' +
-        '</p>');
+        expect(html).toContain('<p style="color:red;">'
+        + '<a style="color:red;" href="https://www.example.com/">Link</a>'
+        + '</p>');
     });
 
-    it('Renders the custom list nodes', async (): Promise<void> => {
+    it('renders the custom list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<ul style="color:red;">' +
-            '<li style="color:red;">Unordered list item 1</li>' +
-            '<li style="color:red;">Unordered list item 2</li>' +
-            '<li style="color:red;">Unordered list item 3</li>' +
-        '</ul>');
+        expect(html).toContain('<ul style="color:red;">'
+        + '<li style="color:red;">Unordered list item 1</li>'
+        + '<li style="color:red;">Unordered list item 2</li>'
+        + '<li style="color:red;">Unordered list item 3</li>'
+        + '</ul>');
 
-        expect(html).toContain('<ol style="color:red;">' +
-            '<li style="color:red;">Ordered list item 1</li>' +
-            '<li style="color:red;">Ordered list item 2</li>' +
-            '<li style="color:red;">Ordered list item 3</li>' +
-        '</ol>');
+        expect(html).toContain('<ol style="color:red;">'
+        + '<li style="color:red;">Ordered list item 1</li>'
+        + '<li style="color:red;">Ordered list item 2</li>'
+        + '<li style="color:red;">Ordered list item 3</li>'
+        + '</ol>');
     });
 
-    it('Renders the custom quote node', async (): Promise<void> => {
+    it('renders the custom quote node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<blockquote style="color:red;">Quote</blockquote>');
     });
 
-    it('Renders the custom code node', async (): Promise<void> => {
+    it('renders the custom code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<pre style="color:red;">Code</pre>');
     });
 
-    it('Renders the custom image node', async (): Promise<void> => {
+    it('renders the custom image node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<img ' +
-            'style="background:red;" ' +
-            'src="example_image_df80dd3023.jpg" ' +
-            'alt="Image alternative text" ' +
-            'width="480" ' +
-            'height="320"' +
-        '>');
+        expect(html).toContain('<img '
+        + 'style="background:red;" '
+        + 'src="example_image_df80dd3023.jpg" '
+        + 'alt="Image alternative text" '
+        + 'width="480" '
+        + 'height="320"'
+        + '>');
     });
 });

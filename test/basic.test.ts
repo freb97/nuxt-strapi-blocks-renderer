@@ -1,5 +1,5 @@
-import { describe, expect, it } from 'vitest';
 import { fileURLToPath } from 'node:url';
+import { describe, expect, it } from 'vitest';
 import { $fetch, setup } from '@nuxt/test-utils';
 
 const fetchPage = async (): Promise<string> => {
@@ -7,17 +7,17 @@ const fetchPage = async (): Promise<string> => {
 
     // Remove html comment nodes
     html = html.replace(/<!--\[-->/g, '');
-    html = html.replace(/<!--]-->/g, '');
+    html = html.replace(/<!--\]-->/g, '');
 
     return html;
 };
 
-describe('Basic blocks text rendering', async (): Promise<void> => {
+describe('basic blocks text rendering', async (): Promise<void> => {
     await setup({
         rootDir: fileURLToPath(new URL('./fixtures/basic', import.meta.url)),
     });
 
-    it('Renders the heading nodes', async (): Promise<void> => {
+    it('renders the heading nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<h1>Heading 1</h1>');
@@ -28,7 +28,7 @@ describe('Basic blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<h6>Heading 6</h6>');
     });
 
-    it('Renders the text nodes', async (): Promise<void> => {
+    it('renders the text nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<p>Paragraph</p>');
@@ -41,42 +41,42 @@ describe('Basic blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<p><a href="https://www.example.com/">Link</a></p>');
     });
 
-    it('Renders the list nodes', async (): Promise<void> => {
+    it('renders the list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<ul>' +
-            '<li>Unordered list item 1</li>' +
-            '<li>Unordered list item 2</li>' +
-            '<li>Unordered list item 3</li>' +
-        '</ul>');
+        expect(html).toContain('<ul>'
+        + '<li>Unordered list item 1</li>'
+        + '<li>Unordered list item 2</li>'
+        + '<li>Unordered list item 3</li>'
+        + '</ul>');
 
-        expect(html).toContain('<ol>' +
-            '<li>Ordered list item 1</li>' +
-            '<li>Ordered list item 2</li>' +
-            '<li>Ordered list item 3</li>' +
-        '</ol>');
+        expect(html).toContain('<ol>'
+        + '<li>Ordered list item 1</li>'
+        + '<li>Ordered list item 2</li>'
+        + '<li>Ordered list item 3</li>'
+        + '</ol>');
     });
 
-    it('Renders the quote node', async (): Promise<void> => {
+    it('renders the quote node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<blockquote>Quote</blockquote>');
     });
 
-    it('Renders the code node', async (): Promise<void> => {
+    it('renders the code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<pre>Code</pre>');
     });
 
-    it('Renders the image node', async (): Promise<void> => {
+    it('renders the image node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<img ' +
-            'src="example_image_df80dd3023.jpg" ' +
-            'alt="Image alternative text" ' +
-            'width="480" ' +
-            'height="320"' +
-        '>');
+        expect(html).toContain('<img '
+        + 'src="example_image_df80dd3023.jpg" '
+        + 'alt="Image alternative text" '
+        + 'width="480" '
+        + 'height="320"'
+        + '>');
     });
 });
