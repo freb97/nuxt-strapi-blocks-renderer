@@ -5,6 +5,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "nuxi dev",
+        "prepare": "nuxi prepare",
         "build": "nuxi build",
         "generate": "nuxi generate"
     },

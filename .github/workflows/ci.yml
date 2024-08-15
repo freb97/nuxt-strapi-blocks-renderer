@@ -30,6 +30,9 @@ jobs:
         name: 'Release to NPM registry'
         needs: [ test ]
         runs-on: ubuntu-latest
+        if: |
+            github.event_name == 'push' &&
+            !contains(github.event.head_commit.message, '[skip-release]')
 
         steps:
             - uses: actions/checkout@v4
@@ -41,9 +44,7 @@ jobs:
             - run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
             - run: npm install
             - run: npm run dev:prepare
+            - run: npm run build
 
             - name: Release
-              if: |
-                  github.event_name == 'push' &&
-                  !contains(github.event.head_commit.message, '[skip-release]')
               run: npm run release:ci

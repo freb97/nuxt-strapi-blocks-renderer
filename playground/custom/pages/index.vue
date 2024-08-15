@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import sampleNodes from '#strapi-blocks-renderer/.fixtures/sampleBlockNodes.json';
+    import sampleNodes from '#strapi-blocks-renderer/../.fixtures/sampleBlockNodes.json';
 
     import type { BlockNode } from '#strapi-blocks-renderer/types';
 

@@ -1,6 +1,6 @@
 {
     "name": "nuxt-strapi-blocks-renderer",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Renderer for the strapi CMS blocks text content element.",
     "license": "MIT",
     "repository": {
@@ -27,9 +27,10 @@
     "scripts": {
         "prepack": "nuxt-module-build build",
         "dev": "npm run dev:basic",
-        "dev:prepare": "nuxt-module-build build --stub && nuxt-module-build prepare",
+        "dev:prepare": "nuxt-module-build prepare && nuxi prepare playground/basic && nuxi prepare playground/custom",
         "dev:basic": "nuxi dev playground/basic",
         "dev:custom": "nuxi dev playground/custom",
+        "build": "nuxt-module-build build",
         "release": "npm run lint && npm run test && npm run prepack && npm publish",
         "release:ci": "npm run prepack && npm publish",
         "lint:es": "eslint './**/*.{js,ts,vue}' --max-warnings=0",

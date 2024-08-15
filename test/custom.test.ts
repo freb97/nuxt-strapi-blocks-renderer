@@ -14,7 +14,7 @@ const fetchPage = async (): Promise<string> => {
 
 describe('custom blocks text rendering', async (): Promise<void> => {
     await setup({
-        rootDir: fileURLToPath(new URL('./fixtures/custom', import.meta.url)),
+        rootDir: fileURLToPath(new URL('../playground/custom', import.meta.url)),
     });
 
     it('renders the custom heading nodes', async (): Promise<void> => {

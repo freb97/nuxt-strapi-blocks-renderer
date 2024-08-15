@@ -1,3 +1,8 @@
+# 1.0.9
+- Updated eslint configuration
+- Bumped dependencies
+- Configured renovate bot
+
 # 1.0.8
 - Fixed code node handling - Thanks to @TRiBotWillB
 - Bumped dependencies
