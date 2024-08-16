@@ -343,6 +343,17 @@ To run the Vitest unit tests, run the following command:
 npm run test
 ````
 
+### Build
+
+To build the module, first install all dependencies and [generate the type stubs](#type-stubs).
+Then run the build script:
+
+```bash
+npm run build
+```
+
+The module files will be output to the `dist` folder.
+
 ### Release
 
 To release a new version of the strapi blocks renderer nuxt module, take the following steps:
@@ -350,12 +361,18 @@ To release a new version of the strapi blocks renderer nuxt module, take the fol
 1. Increment version number in the `package.json` file
 2. Add changelog entry for the new version number
 3. Run linters and unit tests
-4. Log in to NPM using your access token
-5. Run the `release` command
+4. Build the nuxt module
+ 
+   ```bash
+   npm run build
+   ```
 
-```bash
-npm run release
-```
+5. Log in to NPM using your access token
+6. Run the `release` command
+
+   ```bash
+   npm run release
+   ```
 
 [github-actions-src]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions/workflows/ci.yml/badge.svg
 [github-actions-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions

@@ -36,7 +36,8 @@
         "lint:es": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
         "lint:types": "vue-tsc --noEmit",
         "test": "vitest run",
-        "test:watch": "vitest watch"
+        "test:watch": "vitest watch",
+        "renovate:config:validate": "renovate-config-validator"
     },
     "dependencies": {
         "@nuxt/kit": "^3.12.3",
@@ -51,6 +52,7 @@
         "@types/node": "^22.3.0",
         "eslint": "^8.57.0",
         "nuxt": "^3.12.4",
+        "renovate": "^38.37.1",
         "vitest": "^2.0.5",
         "vue-tsc": "^2.0.29"
     },
