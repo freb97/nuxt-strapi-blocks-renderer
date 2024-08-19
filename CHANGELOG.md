@@ -1,3 +1,6 @@
+# 1.0.10
+- Bumped dependencies
+
 # 1.0.9
 - Updated eslint configuration
 - Bumped dependencies
