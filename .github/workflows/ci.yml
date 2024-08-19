@@ -1,4 +1,4 @@
-name: 'tests'
+name: 'Test & Release'
 
 on:
     push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
     test:
-        name: 'Lint & Test Package'
+        name: 'Test package'
         runs-on: ubuntu-latest
 
         steps:
@@ -18,16 +18,23 @@ jobs:
 
             - uses: actions/setup-node@v4
               with:
-                node-version: '20'
+                node-version: '22'
 
-            - run: npm install
-            - run: npm run dev:prepare
-            - run: npm run lint:es
-            - run: npm run lint:types
-            - run: npm run test
+            - name: Install
+              run: |
+                npm install
+                npm run dev:prepare
+
+            - name: Lint
+              run: |
+                npm run lint:es
+                npm run lint:types
+
+            - name: Test
+              run: npm run test
 
     release:
-        name: 'Release to NPM registry'
+        name: 'Release package'
         needs: [ test ]
         runs-on: ubuntu-latest
         if: |
@@ -39,12 +46,47 @@ jobs:
 
             - uses: actions/setup-node@v4
               with:
-                  node-version: '20'
+                  node-version: '22'
 
-            - run: npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
-            - run: npm install
-            - run: npm run dev:prepare
-            - run: npm run build
+            - name: Install
+              run: |
+                npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
+                npm install
+                npm run dev:prepare
 
             - name: Release
               run: npm run release:ci
+
+    bump-version:
+        name: 'Bump package version'
+        needs: [ test ]
+        runs-on: ubuntu-latest
+        if: |
+            github.event.pull_request.merged == true &&
+            startsWith(github.event.pull_request.head.ref, 'renovate/')
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: '22'
+
+            - name: Install
+              run: npm install --from-lockfile
+
+            - name: Bump version
+              id: bump_version
+              run: |
+                NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s" | sed 's/v//')
+                echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
+
+            - name: Update CHANGELOG.md
+              run: |
+                echo -e "# $NEW_VERSION\n- Bumped dependencies\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+                git add CHANGELOG.md
+
+            - name: Push changes
+              run: |
+                git commit --amend --no-edit
+                git push origin HEAD:main --follow-tags
