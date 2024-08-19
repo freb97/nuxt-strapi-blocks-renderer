@@ -19,6 +19,7 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                 node-version: '22'
+                cache: 'npm'
 
             - name: Install
               run: |
@@ -48,6 +49,7 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: '22'
+                  cache: 'npm'
 
             - name: Install
               run: |
@@ -72,9 +74,10 @@ jobs:
             - uses: actions/setup-node@v4
               with:
                   node-version: '22'
+                  cache: 'npm'
 
             - name: Install
-              run: npm install --from-lockfile
+              run: npm install
 
             - name: Bump version
               id: bump_version
