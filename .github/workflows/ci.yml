@@ -53,12 +53,13 @@ jobs:
 
             - name: Install
               run: |
-                npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
                 npm install
                 npm run dev:prepare
 
             - name: Release
-              run: npm run release:ci
+              run: |
+                npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
+                npm run release:ci
 
     bump-version:
         name: 'Bump package version'
@@ -77,11 +78,16 @@ jobs:
                   cache: 'npm'
 
             - name: Install
-              run: npm install
+              run: |
+                npm install
+                npm run dev:prepare
 
             - name: Bump version
               id: bump_version
               run: |
+                git config user.name "github-actions[bot]"
+                git config user.email "github-actions[bot]@users.noreply.github.com"
+
                 NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s")
                 echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
@@ -93,4 +99,9 @@ jobs:
             - name: Push changes
               run: |
                 git commit --amend --no-edit
-                git push origin HEAD:main --follow-tags
+                git push origin main --tags
+
+            - name: Release new version
+              run: |
+                  npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
+                  npm run release:ci
