@@ -31,11 +31,12 @@ export default defineNuxtModule<ModuleOptions>({
         runtimeConfig.public.strapiBlocksRenderer
             = defu(runtimeConfig.public.strapiBlocksRenderer as ModuleOptions, options);
 
-        addImports([{
-            name: 'useBlocksText',
-            as: 'useBlocksText',
-            from: resolve(runtimeDirectory, './composables/useBlocksText'),
-        },
+        addImports([
+            {
+                name: 'useBlocksText',
+                as: 'useBlocksText',
+                from: resolve(runtimeDirectory, './composables/useBlocksText'),
+            },
         ]);
 
         addComponentsDir({

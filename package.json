@@ -25,14 +25,13 @@
         "dist"
     ],
     "scripts": {
-        "prepack": "nuxt-module-build build",
         "dev": "npm run dev:basic",
         "dev:prepare": "nuxt-module-build prepare && nuxi prepare playground/basic && nuxi prepare playground/custom",
         "dev:basic": "nuxi dev playground/basic",
         "dev:custom": "nuxi dev playground/custom",
         "build": "nuxt-module-build build",
-        "release": "npm run lint && npm run test && npm run prepack && npm publish",
-        "release:ci": "npm run prepack && npm publish",
+        "release": "npm run lint && npm run test && npm run build && npm publish",
+        "release:ci": "npm run build && npm publish",
         "lint:es": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
         "lint:types": "vue-tsc --noEmit",
         "test": "vitest run",
@@ -57,7 +56,14 @@
         "vue-tsc": "^2.0.29"
     },
     "keywords": [
-        "nuxt", "nuxt3", "nuxtjs", "nuxt-module", "strapi", "strapi-cms", "json", "blocks"
+        "nuxt",
+        "nuxt3",
+        "nuxtjs",
+        "nuxt-module",
+        "strapi",
+        "strapi-cms",
+        "json",
+        "blocks"
     ],
     "engines": {
         "node": "^18.x || ^20.x || ^22.x"
