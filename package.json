@@ -1,6 +1,6 @@
 {
     "name": "nuxt-strapi-blocks-renderer",
-    "version": "1.0.9",
+    "version": "1.0.10",
     "description": "Renderer for the strapi CMS blocks text content element.",
     "license": "MIT",
     "repository": {
