@@ -116,9 +116,10 @@ paragraph node component would be named `MyCustomBlocksPrefixParagraphNode`.
 
 #### Other Custom Tags
 
-You can apply similar customizations to all other HTML tags used by the renderer.
+You can apply similar customizations to all other HTML tags used by the renderer:
 
-##### Headings
+<details>
+<summary>Headings</summary>
 
 Custom heading tags (`<h1>`, `<h2>`, `<h3>`, etc.):
 
@@ -139,8 +140,10 @@ Custom heading tags (`<h1>`, `<h2>`, `<h3>`, etc.):
 ```
 
 This pattern also extends to the `h3`, `h4`, `h5` and `h6` tags.
+</details>
 
-##### Lists
+<details>
+<summary>Lists</summary>
 
 Custom list tags (`<ol>`, `<ul>` and `<li>`):
 
@@ -166,8 +169,10 @@ Custom list tags (`<ol>`, `<ul>` and `<li>`):
     </li>
 </template>
 ```
+</details>
 
-##### Blockquotes and Codes
+<details>
+<summary>Blockquotes and Codes</summary>
 
 Custom blockquote and code tags (`<blockquote>`, `<pre>`):
 
@@ -184,8 +189,10 @@ Custom blockquote and code tags (`<blockquote>`, `<pre>`):
     <pre class="my-custom-class-for-pre"><slot /></pre>
 </template>
 ```
+</details>
 
-##### Inline text nodes
+<details>
+<summary>Inline text nodes</summary>
 
 Custom inline text nodes (`<strong>`, `<em>`, `<u>`, `<del>`, `<code>`):
 
@@ -225,8 +232,10 @@ Custom inline text nodes (`<strong>`, `<em>`, `<u>`, `<del>`, `<code>`):
     </code>
 </template>
 ```
+</details>
 
-##### Links
+<details>
+<summary>Links</summary>
 
 Custom link tag (`<a>`):
 
@@ -246,8 +255,10 @@ Custom link tag (`<a>`):
 ```
 
 When rendering a link tag, the url gets passed as the `url` component property.
+</details>
 
-##### Images
+<details>
+<summary>Images</summary>
 
 Custom image tag (`<img>`):
 
@@ -272,6 +283,7 @@ Custom image tag (`<img>`):
 
 When rendering an image tag, the image object gets passed as the `image` component property.
 You can also use different image components here, i.e. `NuxtImg` or others.
+</details>
 
 ## Development
 
