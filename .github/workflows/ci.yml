@@ -38,8 +38,9 @@ jobs:
         needs: [ test ]
         runs-on: ubuntu-latest
         if: |
-            github.event_name == 'push' &&
-            !contains(github.event.head_commit.message, '[skip-release]')
+          github.event_name == 'push' &&
+          !contains(github.event.head_commit.message, '[skip-release]') &&
+          !startsWith(github.ref, 'refs/heads/renovate/')
 
         steps:
             - uses: actions/checkout@v4
@@ -62,8 +63,10 @@ jobs:
         needs: [ test ]
         runs-on: ubuntu-latest
         if: |
-            github.event.pull_request.merged == true &&
-            startsWith(github.event.pull_request.head.ref, 'renovate/')
+          github.event_name == 'pull_request' &&
+          github.event.action == 'closed' &&
+          github.event.pull_request.merged == true &&
+          startsWith(github.event.pull_request.head.ref, 'renovate/')
 
         steps:
             - uses: actions/checkout@v4
@@ -78,7 +81,7 @@ jobs:
             - name: Bump version
               id: bump_version
               run: |
-                NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s" | sed 's/v//')
+                NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s")
                 echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
 
             - name: Update CHANGELOG.md
