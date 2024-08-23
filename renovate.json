@@ -5,7 +5,7 @@
         "schedule:monthly"
     ],
     "automerge": true,
-    "bumpVersion": "minor",
+    "bumpVersion": "patch",
     "rangeStrategy": "bump",
     "commitMessagePrefix": "chore:"
 }
