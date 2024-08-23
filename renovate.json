@@ -1,9 +1,11 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
-        "group:allNonMajor"
+        "group:allNonMajor",
+        "schedule:monthly"
     ],
-    "automerge": false,
+    "automerge": true,
     "bumpVersion": "minor",
+    "rangeStrategy": "bump",
     "commitMessagePrefix": "chore:"
 }
