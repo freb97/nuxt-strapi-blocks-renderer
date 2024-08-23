@@ -4,6 +4,6 @@
         "group:allNonMajor"
     ],
     "automerge": false,
-    "bumpVersion": "patch",
+    "bumpVersion": "minor",
     "commitMessagePrefix": "chore:"
 }
