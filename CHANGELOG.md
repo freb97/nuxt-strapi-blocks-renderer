@@ -1,3 +1,6 @@
+# 1.0.12
+- Bumped dependencies
+
 # 1.0.10
 - Bumped dependencies
 
