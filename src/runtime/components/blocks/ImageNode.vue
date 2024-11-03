@@ -1,7 +1,7 @@
 <script setup lang="ts">
-    const props = defineProps<{
-        image: any
-    }>();
+const props = defineProps<{
+    image: Record<string, string>;
+}>();
 </script>
 
 <template>

@@ -1,6 +1,6 @@
+import { $fetch, setup } from '@nuxt/test-utils';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { $fetch, setup } from '@nuxt/test-utils';
 
 const fetchPage = async (): Promise<string> => {
     let html: string = await $fetch('/');
@@ -45,16 +45,16 @@ describe('basic blocks text rendering', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<ul>'
-        + '<li>Unordered list item 1</li>'
-        + '<li>Unordered list item 2</li>'
-        + '<li>Unordered list item 3</li>'
-        + '</ul>');
+            + '<li>Unordered list item 1</li>'
+            + '<li>Unordered list item 2</li>'
+            + '<li>Unordered list item 3</li>'
+            + '</ul>');
 
         expect(html).toContain('<ol>'
-        + '<li>Ordered list item 1</li>'
-        + '<li>Ordered list item 2</li>'
-        + '<li>Ordered list item 3</li>'
-        + '</ol>');
+            + '<li>Ordered list item 1</li>'
+            + '<li>Ordered list item 2</li>'
+            + '<li>Ordered list item 3</li>'
+            + '</ol>');
     });
 
     it('renders the quote node', async (): Promise<void> => {
@@ -73,10 +73,10 @@ describe('basic blocks text rendering', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<img '
-        + 'src="example_image_df80dd3023.jpg" '
-        + 'alt="Image alternative text" '
-        + 'width="480" '
-        + 'height="320"'
-        + '>');
+            + 'src="example_image_df80dd3023.jpg" '
+            + 'alt="Image alternative text" '
+            + 'width="480" '
+            + 'height="320"'
+            + '>');
     });
 });

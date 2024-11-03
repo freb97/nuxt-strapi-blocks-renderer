@@ -1,17 +1,7 @@
 export default defineNuxtConfig({
-    compatibilityDate: '2024-08-15',
-
     modules: [
         '../../src/module',
     ],
-
-    typescript: {
-        tsConfig: {
-            compilerOptions: {
-                resolveJsonModule: true,
-            },
-        },
-    },
 
     components: {
         dirs: [
@@ -21,5 +11,15 @@ export default defineNuxtConfig({
             },
         ],
         global: true,
+    },
+
+    compatibilityDate: '2024-08-15',
+
+    typescript: {
+        tsConfig: {
+            compilerOptions: {
+                resolveJsonModule: true,
+            },
+        },
     },
 });

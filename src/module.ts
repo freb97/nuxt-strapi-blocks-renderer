@@ -1,11 +1,11 @@
+import type { ComponentsDir, Nuxt, RuntimeConfig } from '@nuxt/schema';
+
 import { addComponentsDir, addImports, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
 
-import type { ComponentsDir, Nuxt, RuntimeConfig } from '@nuxt/schema';
-
 export interface ModuleOptions {
-    prefix: string
-    blocksPrefix: string
+    prefix: string;
+    blocksPrefix: string;
 }
 
 export default defineNuxtModule<ModuleOptions>({

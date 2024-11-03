@@ -1,5 +1,4 @@
-import type { ConcreteComponent, VNode } from 'vue';
-
+import type { ModuleOptions } from '#strapi-blocks-renderer/../module';
 import type {
     BlockNode,
     CodeBlockNode,
@@ -13,8 +12,7 @@ import type {
     QuoteBlockNode,
     TextInlineNode,
 } from '#strapi-blocks-renderer/types';
-
-import type { ModuleOptions } from '#strapi-blocks-renderer/../module';
+import type { ConcreteComponent, VNode } from 'vue';
 
 import { h, resolveComponent, useRuntimeConfig } from '#imports';
 

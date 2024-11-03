@@ -1,18 +1,18 @@
 <script setup lang="ts">
-    import type { VNode } from 'vue';
-    import type { BlockNode } from '#strapi-blocks-renderer/types';
+import type { BlockNode } from '#strapi-blocks-renderer/types';
+import type { VNode } from 'vue';
 
-    import { useBlocksText } from '#strapi-blocks-renderer/composables/useBlocksText';
+import { useBlocksText } from '#strapi-blocks-renderer/composables/useBlocksText';
 
-    const props = defineProps<{
-        nodes: BlockNode[]
-    }>();
+const props = defineProps<{
+    nodes: BlockNode[];
+}>();
 
-    const { text } = useBlocksText(props.nodes);
+const { text } = useBlocksText(props.nodes);
 
-    const RenderText = (): VNode[] => {
-        return text;
-    };
+const RenderText = (): VNode[] => {
+    return text;
+};
 </script>
 
 <template>

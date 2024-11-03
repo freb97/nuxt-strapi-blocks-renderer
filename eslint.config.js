@@ -1,34 +1,46 @@
-import antfu from '@antfu/eslint-config';
+import { createConfigForNuxt } from '@nuxt/eslint-config/flat';
 
-export default antfu(
-  {
-    vue: true,
-    typescript: true,
-  },
-  {
-    files: ['**/*.vue'],
-    rules: {
-      'style/indent': 'off',
-      'vue/multi-word-component-names': 'off',
-      'vue/no-setup-props-destructure': 'off',
-      'vue/no-multiple-template-root': 'off',
-      'vue/html-indent': ['warn', 4],
-      'vue/script-indent': ['warn', 4, {
-        baseIndent: 1,
-      }],
+export default createConfigForNuxt({
+    features: {
+        tooling: true,
+        typescript: {
+            strict: true,
+        },
+        stylistic: {
+            indent: 4,
+            semi: true,
+        },
     },
-  },
-  {
-    files: ['**/*.ts'],
+}).override('nuxt/vue/rules', {
     rules: {
-      'style/indent': ['warn', 4],
+        'vue/block-lang': [ 'error', { script: { lang: 'ts' } } ],
+        'vue/block-order': [ 'error', { order: [ 'script', 'template', 'style' ] } ],
+        'vue/component-name-in-template-casing': [ 'error', 'PascalCase', { registeredComponentsOnly: false } ],
+        'vue/multi-word-component-names': 'off',
+        'vue/no-ref-object-reactivity-loss': 'error',
     },
-  },
-  {
+}).override('nuxt/stylistic', {
     rules: {
-      'style/semi': ['warn', 'always'],
-      'antfu/top-level-function': 'off',
-      'antfu/if-newline': 'off',
+        '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
+        '@stylistic/comma-dangle': [ 'error', 'always-multiline' ],
     },
-  },
-);
+}).override('nuxt/import/rules', {
+    rules: {
+        'import/order': [ 'error', {
+            'groups': [
+                'type',
+                [ 'builtin', 'external' ],
+                [ 'internal', 'parent', 'sibling', 'index', 'object' ],
+            ],
+            'newlines-between': 'always',
+            'alphabetize': {
+                order: 'asc',
+            },
+        } ],
+    },
+}).append({
+    rules: {
+        'prefer-template': [ 'error' ],
+        'no-unused-vars': [ 'error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' } ],
+    },
+});

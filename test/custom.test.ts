@@ -1,6 +1,6 @@
+import { $fetch, setup } from '@nuxt/test-utils';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
-import { $fetch, setup } from '@nuxt/test-utils';
 
 const fetchPage = async (): Promise<string> => {
     let html: string = await $fetch('/');
@@ -40,24 +40,24 @@ describe('custom blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<p style="color:red;"><code style="color:red;">Code</code></p>');
 
         expect(html).toContain('<p style="color:red;">'
-        + '<a style="color:red;" href="https://www.example.com/">Link</a>'
-        + '</p>');
+            + '<a style="color:red;" href="https://www.example.com/">Link</a>'
+            + '</p>');
     });
 
     it('renders the custom list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<ul style="color:red;">'
-        + '<li style="color:red;">Unordered list item 1</li>'
-        + '<li style="color:red;">Unordered list item 2</li>'
-        + '<li style="color:red;">Unordered list item 3</li>'
-        + '</ul>');
+            + '<li style="color:red;">Unordered list item 1</li>'
+            + '<li style="color:red;">Unordered list item 2</li>'
+            + '<li style="color:red;">Unordered list item 3</li>'
+            + '</ul>');
 
         expect(html).toContain('<ol style="color:red;">'
-        + '<li style="color:red;">Ordered list item 1</li>'
-        + '<li style="color:red;">Ordered list item 2</li>'
-        + '<li style="color:red;">Ordered list item 3</li>'
-        + '</ol>');
+            + '<li style="color:red;">Ordered list item 1</li>'
+            + '<li style="color:red;">Ordered list item 2</li>'
+            + '<li style="color:red;">Ordered list item 3</li>'
+            + '</ol>');
     });
 
     it('renders the custom quote node', async (): Promise<void> => {
@@ -76,11 +76,11 @@ describe('custom blocks text rendering', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<img '
-        + 'style="background:red;" '
-        + 'src="example_image_df80dd3023.jpg" '
-        + 'alt="Image alternative text" '
-        + 'width="480" '
-        + 'height="320"'
-        + '>');
+            + 'style="background:red;" '
+            + 'src="example_image_df80dd3023.jpg" '
+            + 'alt="Image alternative text" '
+            + 'width="480" '
+            + 'height="320"'
+            + '>');
     });
 });
