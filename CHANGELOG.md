@@ -1,3 +1,6 @@
+# 1.0.14
+- Bumped dependencies
+ 
 # 1.0.13
 - Switched to nuxt eslint config
 - Bumped dependencies
