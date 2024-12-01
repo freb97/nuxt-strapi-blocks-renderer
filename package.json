@@ -39,19 +39,19 @@
         "renovate:config:validate": "renovate-config-validator"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.13.2",
+        "@nuxt/kit": "^3.14.1592",
         "defu": "^6.1.4"
     },
     "devDependencies": {
-        "@nuxt/devtools": "^1.6.0",
-        "@nuxt/eslint-config": "^0.6.1",
+        "@nuxt/devtools": "^1.6.1",
+        "@nuxt/eslint-config": "^0.7.2",
         "@nuxt/module-builder": "^0.8.4",
-        "@nuxt/schema": "^3.13.2",
+        "@nuxt/schema": "^3.14.1592",
         "@nuxt/test-utils": "^3.14.4",
-        "eslint": "^9.14.0",
-        "nuxt": "^3.13.2",
-        "renovate": "^38.142.6",
-        "vitest": "^2.1.4",
+        "eslint": "^9.16.0",
+        "nuxt": "^3.14.1592",
+        "renovate": "^38.142.7",
+        "vitest": "^2.1.6",
         "vue-tsc": "^2.1.10"
     },
     "keywords": [
