@@ -3,7 +3,7 @@ name: 'Test & Release'
 on:
   push:
     branches:
-      - main
+      - '**'
   pull_request:
     branches:
       - main
@@ -38,11 +38,7 @@ jobs:
     name: 'Release package'
     needs: [ test ]
     runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push' &&
-      github.ref == 'refs/heads/main' &&
-      !contains(github.event.head_commit.message, '[skip-release]') &&
-      !startsWith(github.event.head_commit.message, '/renovate/')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
@@ -57,52 +53,24 @@ jobs:
           npm install
           npm run dev:prepare
 
-      - name: Release
-        run: |
-          npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
-          npm run release:ci
-
-  bump-version:
-    name: 'Bump package version'
-    needs: [ test ]
-    runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push' &&
-      startsWith(github.ref, 'refs/heads/renovate/')
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install
-        run: |
-          npm install
-          npm run dev:prepare
-
-      - name: Bump version
-        id: bump_version
+      - name: Release (Renovate)
+        if: startsWith(github.event.head_commit.message, 'chore(deps)')
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
+          
           NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s")
-          echo "NEW_VERSION=$NEW_VERSION" >> $GITHUB_ENV
-
-      - name: Update CHANGELOG.md
-        run: |
           echo -e "# $NEW_VERSION\n- Bumped dependencies\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
+          
           git add CHANGELOG.md
-
-      - name: Push changes
-        run: |
           git commit --amend --no-edit
           git push origin main --tags
-
-      - name: Release new version
-        run: |
+          
           npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
           npm run release:ci
+
+      - name: Release (Manual)
+        if: "!startsWith(github.event.head_commit.message, 'chore(deps)')"
+        run: |
+          npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
+          npm run release:ci || true

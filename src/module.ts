@@ -1,6 +1,6 @@
 import type { ComponentsDir, Nuxt, RuntimeConfig } from '@nuxt/schema';
 
-import { addComponentsDir, addImports, createResolver, defineNuxtModule } from '@nuxt/kit';
+import { addComponent, addComponentsDir, addImports, createResolver, defineNuxtModule } from '@nuxt/kit';
 import { defu } from 'defu';
 
 export interface ModuleOptions {
@@ -22,9 +22,7 @@ export default defineNuxtModule<ModuleOptions>({
     setup(options: ModuleOptions, nuxt: Nuxt) {
         const { resolve } = createResolver(import.meta.url);
 
-        const runtimeDirectory: string = resolve('./runtime');
-
-        nuxt.options.alias['#strapi-blocks-renderer'] = resolve(runtimeDirectory);
+        nuxt.options.alias['#strapi-blocks-renderer'] = resolve('./runtime');
 
         const runtimeConfig: RuntimeConfig = nuxt.options.runtimeConfig;
 
@@ -35,21 +33,27 @@ export default defineNuxtModule<ModuleOptions>({
             {
                 name: 'useBlocksText',
                 as: 'useBlocksText',
-                from: resolve(runtimeDirectory, './composables/useBlocksText'),
+                from: resolve('./runtime/composables/useBlocksText'),
             },
         ]);
 
+        addComponent({
+            name: `${options.prefix}StrapiBlocksText`,
+            filePath: resolve('./runtime/components/StrapiBlocksText.vue'),
+            global: true,
+        });
+
         addComponentsDir({
-            path: resolve(runtimeDirectory, './components'),
+            path: resolve('./runtime/components/blocks'),
             pathPrefix: false,
-            prefix: options.prefix,
+            prefix: options.blocksPrefix,
             global: true,
             priority: 0,
         });
 
         nuxt.hook('components:dirs', (componentsDir: (string | ComponentsDir)[]) => {
             componentsDir.push({
-                path: resolve(runtimeDirectory, './components/blocks'),
+                path: resolve('./runtime/components/blocks'),
                 pathPrefix: false,
                 prefix: options.blocksPrefix,
                 global: true,

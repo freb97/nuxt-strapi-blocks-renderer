@@ -1,4 +1,7 @@
-# 1.0.14
+# 1.0.15
+- Fixed component prefix handling with nuxt-kit@3.15.4
+
+ # 1.0.14
 - Bumped dependencies
  
 # 1.0.13
