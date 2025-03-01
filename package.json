@@ -44,15 +44,15 @@
     },
     "devDependencies": {
         "@nuxt/devtools": "^1.7.0",
-        "@nuxt/eslint-config": "^1.0.0",
+        "@nuxt/eslint-config": "^1.1.0",
         "@nuxt/module-builder": "^0.8.4",
         "@nuxt/schema": "^3.15.4",
-        "@nuxt/test-utils": "^3.15.4",
-        "eslint": "^9.19.0",
+        "@nuxt/test-utils": "^3.17.0",
+        "eslint": "^9.21.0",
         "nuxt": "^3.15.4",
-        "renovate": "^39.145.0",
-        "vitest": "^3.0.4",
-        "vue-tsc": "^2.2.0"
+        "renovate": "^39.185.0",
+        "vitest": "^3.0.7",
+        "vue-tsc": "^2.2.6"
     },
     "keywords": [
         "nuxt",
