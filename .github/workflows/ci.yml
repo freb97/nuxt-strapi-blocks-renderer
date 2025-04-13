@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    name: 'Test package'
+    name: 'Code Quality & Test'
     runs-on: ubuntu-latest
 
     steps:
@@ -38,7 +38,7 @@ jobs:
     name: 'Release package'
     needs: [ test ]
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v4
@@ -53,24 +53,7 @@ jobs:
           npm install
           npm run dev:prepare
 
-      - name: Release (Renovate)
-        if: startsWith(github.event.head_commit.message, 'chore(deps)')
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          
-          NEW_VERSION=$(npm version patch -m "chore: bumped package version to %s")
-          echo -e "# $NEW_VERSION\n- Bumped dependencies\n\n$(cat CHANGELOG.md)" > CHANGELOG.md
-          
-          git add CHANGELOG.md
-          git commit --amend --no-edit
-          git push origin main --tags
-          
-          npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
-          npm run release:ci
-
-      - name: Release (Manual)
-        if: "!startsWith(github.event.head_commit.message, 'chore(deps)')"
+      - name: Release
         run: |
           npm set //registry.npmjs.org/:_authToken=${{ secrets.NPM_PUBLISHING_KEY }}
           npm run release:ci || true
