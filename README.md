@@ -1,3 +1,7 @@
+<p align="center">
+  <img width="320" src="https://raw.githubusercontent.com/freb97/nuxt-strapi-blocks-renderer/refs/heads/main/.github/public/nuxt-strapi-blocks-renderer.png">
+</p>
+
 # Nuxt Strapi Blocks Renderer
 
 [![Github Actions][github-actions-src]][github-actions-href]
@@ -23,7 +27,9 @@ The implementation is based on Strapi's [Blocks React Renderer](https://github.c
 2. Add the module to `nuxt.config.{ts|js}`:
 
     ```typescript
-    modules: ['nuxt-strapi-blocks-renderer']
+    export default defineNuxtConfig({
+        modules: [ 'nuxt-strapi-blocks-renderer' ]
+    })
     ```
 
 ## Usage
@@ -73,15 +79,18 @@ This step is crucial for your custom components to be recognized and used by the
 
 In your Nuxt configuration (`nuxt.config.{js|ts}`), add:
 
-```typescript
-components: {
-    dirs: [
-        {
-            path: '~/components',
-        },
-    ],
-    global: true,
-},
+```ts
+export default defineNuxtConfig({
+    components: {
+        dirs: [
+            {
+                path: '~/components/blocks',
+                pathPrefix: false,
+                global: true,
+            },
+        ],
+    },
+})
 ```
 
 #### Customizing the Paragraph Tag
@@ -90,8 +99,8 @@ To customize the rendering of the paragraph (`<p>`) tag, you need to create a co
 The name of the component follows a predefined pattern: `'StrapiBlocksText' + [NodeName] + 'Node.vue'`.
 To override the default paragraph tag, we create a file called `StrapiBlocksTextParagraphNode.vue`.
 
-```vue
-<!-- components/StrapiBlocksTextParagraphNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextParagraphNode.vue -->
 <template>
     <p class="my-custom-class-for-p">
         <slot />
@@ -103,12 +112,13 @@ This component assigns a custom class `my-custom-class-for-p` to the paragraph t
 
 The prefix for the custom components can be adjusted in your `nuxt.config.{js|ts}`:
 
-```typescript
-modules: ['nuxt-strapi-blocks-renderer'],
-strapiBlocksRenderer: {
-    prefix: 'MyCustomPrefix'
-    blocksPrefix: 'MyCustomBlocksPrefix',
-},
+```ts
+export default defineNuxtConfig({
+    strapiBlocksRenderer: {
+        prefix: 'MyCustomPrefix',
+        blocksPrefix: 'MyCustomBlocksPrefix',
+    },
+})
 ```
 
 With this configuration, the `StrapiBlocksText` component becomes `MyCustomPrefixStrapiBlocksText` and the custom
@@ -123,15 +133,15 @@ You can apply similar customizations to all other HTML tags used by the renderer
 
 Custom heading tags (`<h1>`, `<h2>`, `<h3>`, etc.):
 
-```vue
-<!-- components/StrapiBlocksTextHeading1Node.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextHeading1Node.vue -->
 <template>
     <h1 class="my-custom-class-for-h1">
         <slot />
     </h1>
 </template>
 
-<!-- components/StrapiBlocksTextHeading2Node.vue -->
+<!-- components/blocks/StrapiBlocksTextHeading2Node.vue -->
 <template>
     <h2 class="my-custom-class-for-h2">
         <slot />
@@ -147,22 +157,22 @@ This pattern also extends to the `h3`, `h4`, `h5` and `h6` tags.
 
 Custom list tags (`<ol>`, `<ul>` and `<li>`):
 
-```vue
-<!-- components/StrapiBlocksTextOrderedListNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextOrderedListNode.vue -->
 <template>
     <ol class="my-custom-class-for-ol">
         <slot />
     </ol>
 </template>
 
-<!-- components/StrapiBlocksTextUnorderedListNode.vue -->
+<!-- components/blocks/StrapiBlocksTextUnorderedListNode.vue -->
 <template>
     <ul class="my-custom-class-for-ul">
         <slot />
     </ul>
 </template>
 
-<!-- components/StrapiBlocksTextListItemInlineNode.vue -->
+<!-- components/blocks/StrapiBlocksTextListItemInlineNode.vue -->
 <template>
     <li class="my-custom-class-for-li">
         <slot />
@@ -176,15 +186,15 @@ Custom list tags (`<ol>`, `<ul>` and `<li>`):
 
 Custom blockquote and code tags (`<blockquote>`, `<pre>`):
 
-```vue
-<!-- components/StrapiBlocksTextQuoteNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextQuoteNode.vue -->
 <template>
     <blockquote class="my-custom-class-for-blockquote">
         <slot />
     </blockquote>
 </template>
 
-<!-- components/StrapiBlocksTextCodeNode.vue -->
+<!-- components/blocks/StrapiBlocksTextCodeNode.vue -->
 <template>
     <pre class="my-custom-class-for-pre"><slot /></pre>
 </template>
@@ -196,36 +206,36 @@ Custom blockquote and code tags (`<blockquote>`, `<pre>`):
 
 Custom inline text nodes (`<strong>`, `<em>`, `<u>`, `<del>`, `<code>`):
 
-```vue
-<!-- components/StrapiBlocksTextBoldInlineNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextBoldInlineNode.vue -->
 <template>
     <strong class="my-custom-class-for-strong">
         <slot />
     </strong>
 </template>
 
-<!-- components/StrapiBlocksTextItalicInlineNode.vue -->
+<!-- components/blocks/StrapiBlocksTextItalicInlineNode -->
 <template>
     <em class="my-custom-class-for-em">
         <slot />
     </em>
 </template>
 
-<!-- components/StrapiBlocksTextUnderlineInlineNode.vue -->
+<!-- components/blocks/StrapiBlocksTextUnderlineInlineNode -->
 <template>
     <u class="my-custom-class-for-u">
         <slot />
     </u>
 </template>
 
-<!-- components/StrapiBlocksTextStrikethroughInlineNode.vue -->
+<!-- components/blocks/StrapiBlocksTextStrikethroughInlineNode -->
 <template>
     <del class="my-custom-class-for-del">
         <slot />
     </del>
 </template>
 
-<!-- components/StrapiBlocksTextCodeInlineNode.vue -->
+<!-- components/blocks/StrapiBlocksTextCodeInlineNode.vue -->
 <template>
     <code class="my-custom-class-for-code">
         <slot />
@@ -239,8 +249,8 @@ Custom inline text nodes (`<strong>`, `<em>`, `<u>`, `<del>`, `<code>`):
 
 Custom link tag (`<a>`):
 
-```vue
-<!-- components/StrapiBlocksTextLinkInlineNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextLinkInlineNode.vue -->
 <script setup lang="ts">
     const props = defineProps<{
         url: string;
@@ -262,8 +272,8 @@ When rendering a link tag, the url gets passed as the `url` component property.
 
 Custom image tag (`<img>`):
 
-```vue
-<!-- components/StrapiBlocksTextImageNode.vue -->
+```html
+<!-- components/blocks/StrapiBlocksTextImageNode.vue -->
 <script setup lang="ts">
     const props = defineProps<{
         image: any;

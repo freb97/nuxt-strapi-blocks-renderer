@@ -6,11 +6,11 @@ export default defineNuxtConfig({
     components: {
         dirs: [
             {
-                path: '~/components',
+                path: '~/components/blocks',
                 pathPrefix: false,
+                global: true,
             },
         ],
-        global: true,
     },
 
     compatibilityDate: '2024-08-15',
