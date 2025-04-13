@@ -118,7 +118,7 @@ paragraph node component would be named `MyCustomBlocksPrefixParagraphNode`.
 
 You can apply similar customizations to all other HTML tags used by the renderer:
 
-<details>
+<details open>
 <summary>Headings</summary>
 
 Custom heading tags (`<h1>`, `<h2>`, `<h3>`, etc.):
