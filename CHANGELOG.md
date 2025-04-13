@@ -1,5 +1,6 @@
 # 1.0.16
 - Bumped dependencies
+- Updated package config
 
 # 1.0.15
 - Fixed component prefix handling with nuxt-kit@3.15.4
