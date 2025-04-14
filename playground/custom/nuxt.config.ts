@@ -18,6 +18,15 @@ export default defineNuxtConfig({
         ],
     },
 
+    runtimeConfig: {
+        public: {
+            strapiBlocksRenderer: {
+                prefix: 'Custom',
+                blocksPrefix: 'Custom',
+            },
+        },
+    },
+
     compatibilityDate: '2024-08-15',
 
     typescript: {
