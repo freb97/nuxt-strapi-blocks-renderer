@@ -14,7 +14,7 @@ A fully customizable Nuxt 3 module for rendering text with the new Blocks rich t
 The implementation is based on Strapi's [Blocks React Renderer](https://github.com/strapi/blocks-react-renderer/).
 
 - ✨ [Release notes](/CHANGELOG.md)
-- 🏀 [Online stackblitz playground](https://stackblitz.com/github/freb97/nuxt-strapi-blocks-renderer?file=playground%2Fbasic%2Fpages%2Findex.vue)
+- 🏀 [Online stackblitz playground](https://stackblitz.com/github/freb97/nuxt-strapi-blocks-renderer?file=playground%2Fcustom%2Fpages%2Findex.vue)
 
 ## Installation
 
