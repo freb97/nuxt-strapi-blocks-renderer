@@ -1,5 +1,5 @@
 <template>
-    <del style="color: red;">
+    <del class="line-through">
         <slot />
     </del>
 </template>

@@ -1,5 +1,5 @@
 <template>
-    <u style="color: red;">
+    <u class="underline">
         <slot />
     </u>
 </template>

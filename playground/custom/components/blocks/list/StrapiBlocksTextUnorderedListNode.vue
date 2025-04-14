@@ -1,5 +1,5 @@
 <template>
-    <ul style="color: red;">
+    <ul class="list-disc mb-4">
         <slot />
     </ul>
 </template>

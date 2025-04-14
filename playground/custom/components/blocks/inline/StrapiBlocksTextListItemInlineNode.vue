@@ -1,5 +1,5 @@
 <template>
-    <li style="color: red;">
+    <li class="mb-1 last:mb-0">
         <slot />
     </li>
 </template>

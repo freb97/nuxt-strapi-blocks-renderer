@@ -20,63 +20,63 @@ describe('custom blocks text rendering', async (): Promise<void> => {
     it('renders the custom heading nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<h1 style="color:red;">Heading 1</h1>');
-        expect(html).toContain('<h2 style="color:red;">Heading 2</h2>');
-        expect(html).toContain('<h3 style="color:red;">Heading 3</h3>');
-        expect(html).toContain('<h4 style="color:red;">Heading 4</h4>');
-        expect(html).toContain('<h5 style="color:red;">Heading 5</h5>');
-        expect(html).toContain('<h6 style="color:red;">Heading 6</h6>');
+        expect(html).toContain('<h1 class="text-4xl font-bold mb-6">Heading 1</h1>');
+        expect(html).toContain('<h2 class="text-3xl font-bold mb-6">Heading 2</h2>');
+        expect(html).toContain('<h3 class="text-2xl font-bold mb-4">Heading 3</h3>');
+        expect(html).toContain('<h4 class="text-xl font-bold mb-4">Heading 4</h4>');
+        expect(html).toContain('<h5 class="text-lg font-bold mb-4">Heading 5</h5>');
+        expect(html).toContain('<h6 class="text-base font-bold mb-4">Heading 6</h6>');
     });
 
     it('renders the custom text nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<p style="color:red;">Paragraph</p>');
-        expect(html).toContain('<p style="color:red;">Paragraph with <br>line <br>breaks</p>');
-        expect(html).toContain('<p style="color:red;"><strong style="color:red;">Bold</strong></p>');
-        expect(html).toContain('<p style="color:red;"><em style="color:red;">Italic</em></p>');
-        expect(html).toContain('<p style="color:red;"><u style="color:red;">Underline</u></p>');
-        expect(html).toContain('<p style="color:red;"><del style="color:red;">Strikethrough</del></p>');
-        expect(html).toContain('<p style="color:red;"><code style="color:red;">Code</code></p>');
+        expect(html).toContain('<p class="mb-4">Paragraph</p>');
+        expect(html).toContain('<p class="mb-4">Paragraph with <br>line <br>breaks</p>');
+        expect(html).toContain('<p class="mb-4"><strong class="font-bold">Bold</strong></p>');
+        expect(html).toContain('<p class="mb-4"><em class="italic">Italic</em></p>');
+        expect(html).toContain('<p class="mb-4"><u class="underline">Underline</u></p>');
+        expect(html).toContain('<p class="mb-4"><del class="line-through">Strikethrough</del></p>');
+        expect(html).toContain('<p class="mb-4"><code class="font-mono">Code</code></p>');
 
-        expect(html).toContain('<p style="color:red;">'
-            + '<a style="color:red;" href="https://www.example.com/">Link</a>'
+        expect(html).toContain('<p class="mb-4">'
+            + '<a class="text-blue-500 underline" href="https://www.example.com/" target="_blank" rel="noopener noreferrer">Link</a>'
             + '</p>');
     });
 
     it('renders the custom list nodes', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<ul style="color:red;">'
-            + '<li style="color:red;">Unordered list item 1</li>'
-            + '<li style="color:red;">Unordered list item 2</li>'
-            + '<li style="color:red;">Unordered list item 3</li>'
+        expect(html).toContain('<ul class="list-disc mb-4">'
+            + '<li class="mb-1 last:mb-0">Unordered list item 1</li>'
+            + '<li class="mb-1 last:mb-0">Unordered list item 2</li>'
+            + '<li class="mb-1 last:mb-0">Unordered list item 3</li>'
             + '</ul>');
 
-        expect(html).toContain('<ol style="color:red;">'
-            + '<li style="color:red;">Ordered list item 1</li>'
-            + '<li style="color:red;">Ordered list item 2</li>'
-            + '<li style="color:red;">Ordered list item 3</li>'
+        expect(html).toContain('<ol class="list-decimal mb-4">'
+            + '<li class="mb-1 last:mb-0">Ordered list item 1</li>'
+            + '<li class="mb-1 last:mb-0">Ordered list item 2</li>'
+            + '<li class="mb-1 last:mb-0">Ordered list item 3</li>'
             + '</ol>');
     });
 
     it('renders the custom quote node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<blockquote style="color:red;">Quote</blockquote>');
+        expect(html).toContain('<blockquote class="border-l-2 border-gray-300 pl-4 py-2 italic mb-4">Quote</blockquote>');
     });
 
     it('renders the custom code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<pre style="color:red;">Code</pre>');
+        expect(html).toContain('<pre class="bg-gray-100 p-4 rounded-md mb-4">Code</pre>');
     });
 
     it('renders the custom image node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
         expect(html).toContain('<img '
-            + 'style="background:red;" '
+            + 'class="bg-gray-100 rounded-md overflow-hidden mb-4" '
             + 'src="example_image_df80dd3023.jpg" '
             + 'alt="Image alternative text" '
             + 'width="480" '

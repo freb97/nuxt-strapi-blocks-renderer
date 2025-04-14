@@ -6,7 +6,7 @@ const props = defineProps<{
 
 <template>
     <img
-        style="background: red;"
+        class="bg-gray-100 rounded-md overflow-hidden mb-4"
         :src="props.image.url"
         :alt="props.image.alternativeText"
         :width="props.image.width"

@@ -1,5 +1,5 @@
 <template>
-    <em style="color: red;">
+    <em class="italic">
         <slot />
     </em>
 </template>

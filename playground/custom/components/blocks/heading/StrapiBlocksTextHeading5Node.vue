@@ -1,5 +1,5 @@
 <template>
-    <h5 style="color: red;">
+    <h5 class="text-lg font-bold mb-4">
         <slot />
     </h5>
 </template>

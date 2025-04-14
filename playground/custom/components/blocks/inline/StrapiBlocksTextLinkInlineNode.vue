@@ -6,8 +6,10 @@ const props = defineProps<{
 
 <template>
     <a
-        style="color: red;"
+        class="text-blue-500 underline"
         :href="props.url"
+        target="_blank"
+        rel="noopener noreferrer"
     >
         <slot />
     </a>
