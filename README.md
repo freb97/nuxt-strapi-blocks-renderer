@@ -7,6 +7,7 @@
 [![Github Actions][github-actions-src]][github-actions-href]
 [![NPM version][npm-version-src]][npm-version-href]
 [![NPM downloads][npm-downloads-src]][npm-downloads-href]
+[![NPM last update][npm-last-update-src]][npm-last-update-href]
 [![License][license-src]][license-href]
 
 A fully customizable Nuxt 3 module for rendering text with the new Blocks rich text editor element from Strapi CMS.
@@ -404,6 +405,9 @@ To release a new version of the strapi blocks renderer nuxt module, take the fol
 
 [npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
 [npm-downloads-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
+
+[npm-last-update-src]: https://img.shields.io/npm/last-update/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
+[npm-last-update-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
 
 [license-src]: https://img.shields.io/github/license/freb97/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
 [license-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/blob/main/LICENSE
