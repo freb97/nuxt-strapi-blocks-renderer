@@ -1,3 +1,6 @@
+# 1.0.18
+- Bumped dependencies
+
 # 1.0.17
 - Fixed composable access problems in component prefix
 - Updated custom playground
