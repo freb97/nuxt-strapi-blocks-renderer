@@ -44,20 +44,20 @@
         "renovate:config:validate": "renovate-config-validator"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.17.1",
+        "@nuxt/kit": "^3.17.3",
         "defu": "^6.1.4"
     },
     "devDependencies": {
-        "@nuxt/devtools": "^2.4.0",
-        "@nuxt/eslint-config": "^1.3.0",
+        "@nuxt/devtools": "^2.4.1",
+        "@nuxt/eslint-config": "^1.4.0",
         "@nuxt/module-builder": "^1.0.1",
-        "@nuxt/schema": "^3.17.1",
-        "@nuxt/test-utils": "^3.18.0",
+        "@nuxt/schema": "^3.17.3",
+        "@nuxt/test-utils": "^3.19.0",
         "@nuxtjs/tailwindcss": "^6.14.0",
-        "eslint": "^9.26.0",
-        "nuxt": "^3.17.1",
-        "renovate": "^40.3.4",
-        "vitest": "^3.1.2",
+        "eslint": "^9.27.0",
+        "nuxt": "^3.17.3",
+        "renovate": "^40.17.0",
+        "vitest": "^3.1.4",
         "vue-tsc": "^2.2.10"
     },
     "keywords": [
