@@ -26,7 +26,6 @@ dist
 
 # Env
 .env
-.envrc
 
 # Testing
 reports
