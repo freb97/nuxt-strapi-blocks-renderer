@@ -56,8 +56,8 @@
         "@nuxtjs/tailwindcss": "^6.14.0",
         "eslint": "^9.29.0",
         "nuxt": "^3.17.5",
-        "renovate": "^40.59.2",
-        "vitest": "^3.2.3",
+        "renovate": "^40.62.1",
+        "vitest": "^3.2.4",
         "vue-tsc": "^2.2.10"
     },
     "keywords": [
