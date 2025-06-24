@@ -56,7 +56,7 @@
         "@nuxtjs/tailwindcss": "^6.14.0",
         "eslint": "^9.29.0",
         "nuxt": "^3.17.5",
-        "renovate": "^40.62.1",
+        "renovate": "^41.6.4",
         "vitest": "^3.2.4",
         "vue-tsc": "^2.2.10"
     },
