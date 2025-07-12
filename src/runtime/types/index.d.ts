@@ -58,10 +58,10 @@ export interface ImageBlockNode {
     children: [{ type: 'text'; text: '' }];
 }
 
-export type BlockNode =
-    ParagraphBlockNode |
-    QuoteBlockNode |
-    CodeBlockNode |
-    HeadingBlockNode |
-    ListBlockNode |
-    ImageBlockNode;
+export type BlockNode
+    = ParagraphBlockNode
+        | QuoteBlockNode
+        | CodeBlockNode
+        | HeadingBlockNode
+        | ListBlockNode
+        | ImageBlockNode;
