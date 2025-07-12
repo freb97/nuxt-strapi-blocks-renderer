@@ -1,5 +1,5 @@
-import type { BlockNode } from '#strapi-blocks-renderer/types';
 import type { VNode } from 'vue';
+import type { BlockNode } from '#strapi-blocks-renderer/types';
 
 import { useRuntimeConfig } from '#imports';
 import { renderBlocks } from '#strapi-blocks-renderer/utils';

@@ -1,3 +1,6 @@
+import type { ConcreteComponent, VNode } from 'vue';
+
+import { h, resolveComponent } from 'vue';
 import type {
     BlockNode,
     CodeBlockNode,
@@ -11,9 +14,6 @@ import type {
     QuoteBlockNode,
     TextInlineNode,
 } from '#strapi-blocks-renderer/types';
-import type { ConcreteComponent, VNode } from 'vue';
-
-import { h, resolveComponent } from 'vue';
 
 const getNodeText = (node: TextInlineNode): (VNode | string)[] => {
     const lines: (VNode | string)[] = [];

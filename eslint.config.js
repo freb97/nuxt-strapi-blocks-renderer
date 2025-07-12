@@ -24,20 +24,6 @@ export default createConfigForNuxt({
         '@stylistic/array-bracket-spacing': [ 'error', 'always' ],
         '@stylistic/comma-dangle': [ 'error', 'always-multiline' ],
     },
-}).override('nuxt/import/rules', {
-    rules: {
-        'import/order': [ 'error', {
-            'groups': [
-                'type',
-                [ 'builtin', 'external' ],
-                [ 'internal', 'parent', 'sibling', 'index', 'object' ],
-            ],
-            'newlines-between': 'always',
-            'alphabetize': {
-                order: 'asc',
-            },
-        } ],
-    },
 }).append({
     rules: {
         'prefer-template': [ 'error' ],
