@@ -44,7 +44,7 @@
         "renovate:config:validate": "renovate-config-validator"
     },
     "dependencies": {
-        "@nuxt/kit": "^3.17.7",
+        "@nuxt/kit": "^4.0.1",
         "defu": "^6.1.4"
     },
     "devDependencies": {
