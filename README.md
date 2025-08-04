@@ -89,10 +89,16 @@ export default defineNuxtConfig({
                 pathPrefix: false,
                 global: true,
             },
+            // also include ~/components to ensure other local components are resolved properly
+            '~/components'
         ],
     },
 })
 ```
+
+> [!IMPORTANT]  
+> It's important to include `~/components` in the dirs array.
+> Omitting it may cause locally scoped components (outside of `~/components/blocks`) not to resolve correctly. 
 
 #### Customizing the Paragraph Tag
 
