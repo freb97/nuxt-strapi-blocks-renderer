@@ -10,7 +10,7 @@
 [![NPM last update][npm-last-update-src]][npm-last-update-href]
 [![License][license-src]][license-href]
 
-A fully customizable Nuxt 3 module for rendering text with the new Blocks rich text editor element from Strapi CMS.
+Fully customizable module for Nuxt 3 & 4 to render the "Blocks" rich text editor element from Strapi CMS.
 
 The implementation is based on Strapi's [Blocks React Renderer](https://github.com/strapi/blocks-react-renderer/).
 
@@ -19,19 +19,30 @@ The implementation is based on Strapi's [Blocks React Renderer](https://github.c
 
 ## Installation
 
-1. Install the Blocks renderer:
+To install the Nuxt Strapi Blocks Renderer module, run the following command:
 
-    ```bash
-    npm install nuxt-strapi-blocks-renderer
-    ```
+```bash
+npx nuxt@latest module add nuxt-strapi-blocks-renderer
+```
+
+<details>
+<summary>Or install it manually</summary>
+
+1. Install the module:
+
+   ```bash
+   npm install nuxt-strapi-blocks-renderer
+   ```
 
 2. Add the module to `nuxt.config.{ts|js}`:
 
-    ```typescript
-    export default defineNuxtConfig({
-        modules: [ 'nuxt-strapi-blocks-renderer' ]
-    })
-    ```
+   ```typescript
+   export default defineNuxtConfig({
+       modules: [ 'nuxt-strapi-blocks-renderer' ]
+   })
+   ```
+
+</details>
 
 ## Usage
 
