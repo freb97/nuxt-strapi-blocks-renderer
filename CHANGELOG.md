@@ -1,3 +1,7 @@
+# 1.1.0
+- Updated to Nuxt 4
+- Bumped dependencies
+
 # 1.0.19
 - Bumped dependencies
 
