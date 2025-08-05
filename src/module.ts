@@ -12,6 +12,9 @@ export default defineNuxtModule<ModuleOptions>({
     meta: {
         name: 'nuxt-strapi-blocks-renderer',
         configKey: 'strapiBlocksRenderer',
+        compatibility: {
+            nuxt: '>=3.0.0',
+        },
     },
 
     defaults: {
