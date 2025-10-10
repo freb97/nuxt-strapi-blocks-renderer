@@ -69,7 +69,7 @@ describe('custom blocks text rendering', async (): Promise<void> => {
     it('renders the custom code node', async (): Promise<void> => {
         const html: string = await fetchPage();
 
-        expect(html).toContain('<pre class="bg-gray-100 p-4 rounded-md mb-4">Code</pre>');
+        expect(html).toContain('<pre class="bg-gray-100 p-4 rounded-md mb-4 lang-typescript">Code</pre>');
     });
 
     it('renders the custom image node', async (): Promise<void> => {

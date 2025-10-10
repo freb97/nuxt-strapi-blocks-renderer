@@ -27,6 +27,6 @@ export default createConfigForNuxt({
 }).append({
     rules: {
         'prefer-template': [ 'error' ],
-        'no-unused-vars': [ 'error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' } ],
+        'no-unused-vars': [ 'error', { argsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_', varsIgnorePattern: '^_' } ],
     },
 });

@@ -85,7 +85,7 @@ export const paragraphBlockNode = (node: ParagraphBlockNode, prefix: string): VN
 export const codeBlockNode = (node: CodeBlockNode, prefix: string): VNode => {
     const codeComponent: string | ConcreteComponent = resolveComponent(`${prefix}CodeNode`);
 
-    return h(codeComponent, () => node.children.map(
+    return h(codeComponent, { language: node.language }, () => node.children.map(
         (childNode: TextInlineNode): (VNode | string)[] | VNode => textInlineNode(childNode, prefix),
     ));
 };

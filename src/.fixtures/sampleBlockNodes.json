@@ -219,6 +219,7 @@
     },
     {
         "type": "code",
+        "language": "typescript",
         "children": [
             {
                 "type": "text",

@@ -49,6 +49,7 @@ export interface QuoteBlockNode {
 
 export interface CodeBlockNode {
     type: 'code';
+    language?: string;
     children: TextInlineNode[];
 }
 

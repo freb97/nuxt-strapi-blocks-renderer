@@ -213,6 +213,12 @@ Custom blockquote and code tags (`<blockquote>`, `<pre>`):
 </template>
 
 <!-- components/blocks/StrapiBlocksTextCodeNode.vue -->
+<script setup lang="ts">
+const props = defineProps<{
+    language?: string;
+}>();
+</script>
+
 <template>
     <pre class="my-custom-class-for-pre"><slot /></pre>
 </template>
