@@ -6,7 +6,6 @@
 
 [![Github Actions][github-actions-src]][github-actions-href]
 [![NPM version][npm-version-src]][npm-version-href]
-[![NPM downloads][npm-downloads-src]][npm-downloads-href]
 [![NPM last update][npm-last-update-src]][npm-last-update-href]
 [![License][license-src]][license-href]
 
@@ -425,9 +424,6 @@ To release a new version of the strapi blocks renderer nuxt module, take the fol
 
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=31C553
 [npm-version-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
-
-[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
-[npm-downloads-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
 
 [npm-last-update-src]: https://img.shields.io/npm/last-update/nuxt-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=31C553
 [npm-last-update-href]: https://npmjs.com/package/nuxt-strapi-blocks-renderer
