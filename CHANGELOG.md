@@ -1,3 +1,6 @@
+# 1.1.2
+- Bumped dependencies
+
 # 1.1.1
 - Added language prop for CodeNode
 - Bumped dependencies
