@@ -277,11 +277,13 @@ Custom link tag (`<a>`):
 <script setup lang="ts">
     const props = defineProps<{
         url: string;
+        rel?: string;
+        target?: string;
     }>();
 </script>
 
 <template>
-    <a :href="props.url" class="my-custom-class-for-a">
+    <a :href="props.url" :rel="props.rel" :target="props.target" class="my-custom-class-for-a">
         <slot />
     </a>
 </template>
