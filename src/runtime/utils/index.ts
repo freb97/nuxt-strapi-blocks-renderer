@@ -44,7 +44,7 @@ export const textInlineNode = (node: TextInlineNode, prefix: string): (VNode | s
 export const linkInlineNode = (node: LinkInlineNode, prefix: string): VNode => {
     const linkComponent: string | ConcreteComponent = resolveComponent(`${prefix}LinkInlineNode`);
 
-    return h(linkComponent, { url: node.url }, () => node.children.map((childNode: TextInlineNode) => {
+    return h(linkComponent, { url: node.url, rel: node.rel, target: node.target }, () => node.children.map((childNode: TextInlineNode) => {
         return textInlineNode(childNode, prefix);
     }));
 };

@@ -38,7 +38,7 @@ describe('basic blocks text rendering', async (): Promise<void> => {
         expect(html).toContain('<p><u>Underline</u></p>');
         expect(html).toContain('<p><del>Strikethrough</del></p>');
         expect(html).toContain('<p><code>Code</code></p>');
-        expect(html).toContain('<p><a href="https://www.example.com/">Link</a></p>');
+        expect(html).toContain('<p><a href="https://www.example.com/" rel="noopener noreferrer" target="_blank">Link</a></p>');
     });
 
     it('renders the list nodes', async (): Promise<void> => {
