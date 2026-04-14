@@ -1,3 +1,7 @@
+# 1.1.4
+
+- Added rel and target props to LinkInlineNode component
+
 # 1.1.3
 
 - Bumped dependencies
