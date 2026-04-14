@@ -1,6 +1,8 @@
 <script setup lang="ts">
 const props = defineProps<{
     url: string;
+    rel?: string;
+    target?: string;
 }>();
 </script>
 
@@ -8,8 +10,8 @@ const props = defineProps<{
     <a
         class="text-blue-500 underline"
         :href="props.url"
-        target="_blank"
-        rel="noopener noreferrer"
+        :target="props.target"
+        :rel="props.rel"
     >
         <slot />
     </a>

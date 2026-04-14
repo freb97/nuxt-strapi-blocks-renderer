@@ -13,6 +13,8 @@ export interface TextInlineNode {
 export interface LinkInlineNode {
     type: 'link';
     url: string;
+    rel?: string;
+    target?: string;
     children: TextInlineNode[];
 }
 
