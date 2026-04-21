@@ -421,7 +421,7 @@ To release a new version of the strapi blocks renderer nuxt module, take the fol
    npm run release
    ```
 
-[github-actions-src]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions/workflows/ci.yml/badge.svg
+[github-actions-src]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions/workflows/test.yml/badge.svg
 [github-actions-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions
 
 [npm-version-src]: https://img.shields.io/npm/v/nuxt-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=31C553
