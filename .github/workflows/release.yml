@@ -1,0 +1,82 @@
+name: "Release"
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.15.0"
+          cache: "npm"
+
+      - name: Install
+        run: |
+          npm install
+          npm run dev:prepare
+
+      - name: Lint
+        run: npm run lint
+
+  typecheck:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.14.1"
+          cache: "npm"
+
+      - name: Install
+        run: |
+          npm install
+          npm run dev:prepare
+
+      - name: Typecheck
+        run: npm run typecheck
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.14.1"
+          cache: "npm"
+
+      - name: Install
+        run: |
+          npm install
+          npm run dev:prepare
+
+      - name: Test
+        run: npm run test
+
+  release:
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test]
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24.14.1"
+          cache: "npm"
+
+      - name: Install
+        run: |
+          npm install
+          npm run dev:prepare
+
+      - name: Build
+        run: npm run build
+
+      - name: Release
+        run: npm publish

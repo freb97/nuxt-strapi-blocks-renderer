@@ -36,12 +36,10 @@
         "dev:custom": "nuxi dev playground/custom",
         "build": "nuxt-module-build build",
         "release": "npm run lint && npm run test && npm run build && npm publish",
-        "release:ci": "npm run build && npm publish",
-        "lint:es": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
-        "lint:types": "vue-tsc --noEmit",
+        "lint": "eslint './**/*.{js,ts,vue}' --max-warnings=0",
+        "typecheck": "vue-tsc --noEmit",
         "test": "vitest run",
-        "test:watch": "vitest watch",
-        "renovate:config:validate": "renovate-config-validator"
+        "test:watch": "vitest watch"
     },
     "dependencies": {
         "@nuxt/kit": "^4.4.2",
