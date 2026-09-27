@@ -1,3 +1,5 @@
+> Changes after 1.1.5 are documented in the [GitHub releases](https://github.com/freb97/nuxt-strapi-blocks-renderer/releases).
+
 # 1.1.5
 
 - Bumped dependencies

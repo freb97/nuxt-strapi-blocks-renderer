@@ -13,7 +13,7 @@ Fully customizable module for Nuxt 3 & 4 to render the "Blocks" rich text editor
 
 The implementation is based on Strapi's [Blocks React Renderer](https://github.com/strapi/blocks-react-renderer/).
 
-- ✨ [Release notes](/CHANGELOG.md)
+- ✨ [Release notes](https://github.com/freb97/nuxt-strapi-blocks-renderer/releases)
 - 🏀 [Online stackblitz playground](https://stackblitz.com/github/freb97/nuxt-strapi-blocks-renderer?file=playground%2Fcustom%2Fpages%2Findex.vue)
 
 ## Installation
@@ -327,10 +327,10 @@ You can also use different image components here, i.e. `NuxtImg` or others.
 To install the dependencies, run the `install` command:
 
 ```bash
-npm install
+pnpm install
 ```
 
-The project requires Node.js and NPM to run.
+The project requires Node.js and pnpm to run.
 You can either install these manually on your system or if you have the nix package manager installed, use the
 provided nix-shell with the following command:
 
@@ -345,7 +345,7 @@ This will automatically install the needed software and start up a shell.
 To generate the type stubs for the nuxt module, run the `dev:prepare` command:
 
 ```bash
-npm run dev:prepare
+pnpm run dev:prepare
 ```
 
 ### Development server
@@ -353,7 +353,7 @@ npm run dev:prepare
 To start the development server with the provided text components, run the `dev` command:
 
 ```bash
-npm run dev
+pnpm run dev
 ```
 
 This will boot up the playground with the default text components.
@@ -361,7 +361,7 @@ To start the development server using custom text components, overriding the pro
 use the `dev:custom` command:
 
 ```bash
-npm run dev:custom
+pnpm run dev:custom
 ```
 
 ### Quality
@@ -371,7 +371,7 @@ npm run dev:custom
 To run ESLint, use the following command:
 
 ```bash
-npm run lint:es
+pnpm run lint
 ```
 
 #### Type checks
@@ -379,7 +379,7 @@ npm run lint:es
 To run the TypeScript type checks, use the following command:
 
 ```bash
-npm run lint:types
+pnpm run typecheck
 ```
 
 #### Unit Tests
@@ -387,8 +387,8 @@ npm run lint:types
 To run the Vitest unit tests, run the following command:
 
 ```bash
-npm run test
-````
+pnpm run test
+```
 
 ### Build
 
@@ -396,30 +396,22 @@ To build the module, first install all dependencies and [generate the type stubs
 Then run the build script:
 
 ```bash
-npm run build
+pnpm run build
 ```
 
 The module files will be output to the `dist` folder.
 
 ### Release
 
-To release a new version of the strapi blocks renderer nuxt module, take the following steps:
+Releases are automated with [uppt](https://github.com/danielroe/uppt), based on
+[conventional commits](https://www.conventionalcommits.org):
 
-1. Increment version number in the `package.json` file
-2. Add changelog entry for the new version number
-3. Run linters and unit tests
-4. Build the nuxt module
- 
-   ```bash
-   npm run build
-   ```
-
-5. Log in to NPM using your access token
-6. Run the `release` command
-
-   ```bash
-   npm run release
-   ```
+1. Every push to `main` opens or updates a draft release PR, which bumps the version in `package.json` and lists
+   the changes since the last release. Breaking changes result in a major, `feat:` commits in a minor and all other
+   commits in a patch release.
+2. Merging the release PR tags the release, creates a GitHub release from the PR description and starts the publish
+   workflow.
+3. The module is built, packed and staged on npm. It goes live once the staged version is approved on npmjs.com.
 
 [github-actions-src]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions/workflows/test.yml/badge.svg
 [github-actions-href]: https://github.com/freb97/nuxt-strapi-blocks-renderer/actions

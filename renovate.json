@@ -2,9 +2,13 @@
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
     "extends": [
         "group:allNonMajor",
-        "schedule:weekly"
+        "schedule:monthly"
     ],
     "automerge": true,
     "rangeStrategy": "bump",
-    "commitMessagePrefix": "chore:"
+    "minimumReleaseAge": "3 days",
+    "commitMessagePrefix": "chore:",
+    "postUpdateOptions": [
+        "pnpmDedupe"
+    ]
 }

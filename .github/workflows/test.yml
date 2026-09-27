@@ -10,69 +10,73 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: "24.15.0"
-          cache: "npm"
+          node-version: "24.21.0"
+          cache: "pnpm"
 
       - name: Install
         run: |
-          npm install
-          npm run dev:prepare
+          pnpm install --frozen-lockfile
+          pnpm run dev:prepare
 
       - name: Lint
-        run: npm run lint
+        run: pnpm run lint
 
   typecheck:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: "24.15.0"
-          cache: "npm"
+          node-version: "24.21.0"
+          cache: "pnpm"
 
       - name: Install
         run: |
-          npm install
-          npm run dev:prepare
+          pnpm install --frozen-lockfile
+          pnpm run dev:prepare
 
       - name: Typecheck
-        run: npm run typecheck
+        run: pnpm run typecheck
 
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: "24.15.0"
-          cache: "npm"
+          node-version: "24.21.0"
+          cache: "pnpm"
 
       - name: Install
         run: |
-          npm install
-          npm run dev:prepare
+          pnpm install --frozen-lockfile
+          pnpm run dev:prepare
 
       - name: Test
-        run: npm run test
+        run: pnpm run test
 
   build:
     runs-on: ubuntu-latest
     needs: [lint, typecheck, test]
 
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@v7
+      - uses: pnpm/action-setup@v6
+      - uses: actions/setup-node@v7
         with:
-          node-version: "24.15.0"
-          cache: "npm"
+          node-version: "24.21.0"
+          cache: "pnpm"
 
       - name: Install
         run: |
-          npm install
-          npm run dev:prepare
+          pnpm install --frozen-lockfile
+          pnpm run dev:prepare
 
       - name: Build
-        run: npm run build
+        run: pnpm run build

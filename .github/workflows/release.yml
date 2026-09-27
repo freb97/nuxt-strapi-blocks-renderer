@@ -1,82 +1,76 @@
-name: "Release"
+name: Release
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - main
 
-permissions:
-  id-token: write
-  contents: read
+  pull_request:
+    types: [closed]
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions: {}
 
 jobs:
-  lint:
+  pr:
+    if: github.event_name == 'push' && github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: danielroe/uppt/pr@v0.6.10
         with:
-          node-version: "24.15.0"
-          cache: "npm"
-
-      - name: Install
-        run: |
-          npm install
-          npm run dev:prepare
-
-      - name: Lint
-        run: npm run lint
-
-  typecheck:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24.15.0"
-          cache: "npm"
-
-      - name: Install
-        run: |
-          npm install
-          npm run dev:prepare
-
-      - name: Typecheck
-        run: npm run typecheck
-
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
-        with:
-          node-version: "24.15.0"
-          cache: "npm"
-
-      - name: Install
-        run: |
-          npm install
-          npm run dev:prepare
-
-      - name: Test
-        run: npm run test
+          token: ${{ secrets.GITHUB_TOKEN }}
 
   release:
+    if: |
+      github.event_name == 'pull_request'
+      && github.event.pull_request.merged == true
+      && startsWith(github.event.pull_request.head.ref, 'release/v')
+      && github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
-    needs: [lint, typecheck, test]
+    concurrency:
+      group: release-${{ github.event.pull_request.number }}
+      cancel-in-progress: false
+    permissions:
+      contents: write
+      actions: write
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: danielroe/uppt/release@v0.6.10
         with:
-          node-version: "24.15.0"
-          cache: "npm"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Install
-        run: |
-          npm install
-          npm run dev:prepare
+  pack:
+    if: github.event_name == 'workflow_dispatch' && startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pack-${{ github.ref }}
+      cancel-in-progress: false
+    permissions: {}
+    outputs:
+      files: ${{ steps.pack.outputs.files }}
+    steps:
+      - id: pack
+        uses: danielroe/uppt/pack@v0.6.10
 
-      - name: Build
-        run: npm run build
-
-      - name: Release
-        run: npm publish
+  publish:
+    if: |
+      github.event_name == 'workflow_dispatch'
+      && startsWith(github.ref, 'refs/tags/v')
+      && needs.pack.outputs.files != '[]'
+    needs: [pack]
+    runs-on: ubuntu-latest
+    concurrency:
+      group: publish-${{ github.ref }}
+      cancel-in-progress: false
+    permissions:
+      id-token: write
+    environment: npm
+    steps:
+      - uses: danielroe/uppt/publish@v0.6.10
+        with:
+          files: ${{ needs.pack.outputs.files }}

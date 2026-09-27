@@ -1,0 +1,12 @@
+minimumReleaseAgeExcludePrune: true
+trustPolicy: no-downgrade
+trustPolicyExclude:
+  # Published after 7.5.x without its provenance, required by @babel/core
+  - semver@6.3.1
+  # Published without the provenance of 3.2.1, required by vitest 5.0.2
+  - why-is-node-running@3.2.2
+trustPolicyExcludePrune: true
+shellEmulator: true
+allowBuilds:
+  esbuild: false
+  unrs-resolver: false
